@@ -8,6 +8,5 @@ typedef struct {
 } kb_ctxt_t;
 
 extern kb_ctxt_t kb;
-extern Gfx **gfx_p;
 
 #endif

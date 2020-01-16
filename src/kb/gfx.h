@@ -62,7 +62,7 @@ typedef struct {
 
 void            gfx_init                    (void);
 void            gfx_begin                   (void);
-void            gfx_finish                  (void);
+void            gfx_finish                  (Gfx **p_gfx_p);
 
 void           *gfx_data_push               (void *data, size_t size);
 void            gfx_append                  (Gfx *gfx, size_t size);

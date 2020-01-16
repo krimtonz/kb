@@ -157,10 +157,10 @@ void gfx_begin(void){
     rdp_mode_apply(RDP_MODE_ALL);
 }
 
-void gfx_finish(void){
+void gfx_finish(Gfx **p_gfx_p){
     gSPEndDisplayList(gfx_disp_p++);
-    if(gfx_p != NULL){
-        gSPDisplayList((*gfx_p)++, gfx_disp);
+    if(p_gfx_p){
+        gSPDisplayList((*p_gfx_p)++, gfx_disp);
     }
     Gfx *disp_w = gfx_disp_work;
     gfx_disp_work = gfx_disp;
