@@ -1,0 +1,8 @@
+{
+    "font.png": {
+        "type": "texture",
+        "name": "font",
+        "format": "i8",
+        "tile_height": 128
+    }
+  }
