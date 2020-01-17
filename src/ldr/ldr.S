@@ -23,4 +23,4 @@ j (RAM + 0x60)
 nop
 .end _start
 
-.fill 0x60 - (. - _start)
+.fill 0x50 - (. - _start)

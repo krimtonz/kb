@@ -9,6 +9,9 @@
 #include <n64.h>
 #include <stdarg.h>
 
+#define SCREEN_WIDTH    320
+#define SCREEN_HEIGHT   240
+
 #define COLOR_DEFAULT   0xFFFFFFFF
 #define COLOR_BLACK     0x000000FF
 

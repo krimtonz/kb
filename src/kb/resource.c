@@ -4,6 +4,8 @@
 
 static const char *resource_names[R_END] = {
     "font",
+    "icons",
+    "buttons",
 };
 
 static void *resource_load_kb_texture(enum resource resource){
@@ -33,6 +35,8 @@ static void *resource_load_kb_texture(enum resource resource){
 
 static void *resource_table[R_END] = { NULL };
 static void *(*resource_ctors[R_END])(enum resource) = {
+    resource_load_kb_texture,
+    resource_load_kb_texture,
     resource_load_kb_texture,
 };
 

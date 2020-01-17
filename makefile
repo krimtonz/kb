@@ -5,7 +5,6 @@ LD			= mips64-g++
 AS			= mips64-gcc -x assembler-with-cpp
 OBJCOPY		= mips64-objcopy
 GRC 		= grc
-GENHOOKS	= CPPFLAGS='$(subst ','\'',$(CPPFLAGS))' ./genhooks
 CFILES		= *.c
 SFILES		= *.S
 RESFILES	= *.png
@@ -13,7 +12,6 @@ SRCDIR		= src
 OBJDIR		= obj
 BINDIR		= bin 
 LIBDIR		= lib
-HOOKSDIR	= patch
 KB_VERSIONS	= NBKJ
 RESDESC		= res.json
 
@@ -27,7 +25,7 @@ ALL_LIBS	= $(LIBS)
 KB	= $(foreach v,$(KB_VERSIONS),kb-$(v))
 LDR = $(foreach v,$(KB_VERSIONS),ldr-kb-$(v))
 
-KB-NBKJ = $(OBJ-kb-NBKJ) $(ELF-kb-NBKJ) $(HOOKS-kb-NBKJ)
+KB-NBKJ = $(OBJ-kb-NBKJ) $(ELF-kb-NBKJ)
 
 all	: $(KB)
 clean :
@@ -41,7 +39,6 @@ define bin_template
 SRCDIR-$(1)	= $(5)
 OBJDIR-$(1)	= obj/$(1)
 BINDIR-$(1) = bin/$(1)
-HOOKSDIR-$(1) = patch/gsc/$(1)
 RESDIR-$(1)	= $(6)
 NAME-$(1)	= $(1)
 ADDRESS-$(1)	= $(4)
@@ -54,8 +51,7 @@ RESOBJ-$(1)	     = $$(patsubst $$(RESDIR-$(1))/%,$$(OBJDIR-$(1))/%.o,$$(RESSRC-$
 OBJ-$(1)		 = $$(COBJ-$(1)) $$(SOBJ-$(1)) $$(RESOBJ-$(1))
 ELF-$(1)         = $$(BINDIR-$(1))/$(3).elf
 BIN-$(1)         = $$(BINDIR-$(1))/$(3).bin
-OUTDIR-$(1)      = $$(OBJDIR-$(1)) $$(BINDIR-$(1)) $$(HOOKSDIR-$(1))
-HOOKS-$(1)		 = patch/gsc/$(1)/hooks.gsc
+OUTDIR-$(1)      = $$(OBJDIR-$(1)) $$(BINDIR-$(1))
 BUILD-$(1)		 = $(1)
 CLEAN-$(1)		 = clean-$(1)
 $$(ELF-$(1))		 : LDFLAGS += -Wl,--defsym,start=$$(ADDRESS-$(1))
@@ -74,11 +70,9 @@ $$(BIN-$(1))      : $$(ELF-$(1)) | $$(BINDIR-$(1))
 	$(OBJCOPY) -S -O binary $$< $$@
 $$(OUTDIR-$(1))   :
 	mkdir -p $$@
-$$(HOOKS-$(1))	: $$(ELF-$(1)) $$(HOOKSDIR-$(1)) | $$(SRCDIR-$(1))/bk.h
-	$$(GENHOOKS) $$< $(7) >$$@  
 endef
 
-$(foreach v,$(KB_VERSIONS),$(eval $(call bin_template,kb-$(v),$(v),bk,$(ADDRESS),src/kb,res)))
-$(foreach v,$(KB_VERSIONS),$(eval $(call bin_template,ldr-kb-$(v),$(v),ldr,$(ADDRESS_LDR),src/ldr,ldr/res)))
+$(foreach v,$(KB_VERSIONS),$(eval $(call bin_template,kb-$(v),$(v),kb,$(ADDRESS),src/kb,res)))
+$(foreach v,$(KB_VERSIONS),$(eval $(call bin_template,ldr-kb-$(v),$(v),ldr,$(ADDRESS_LDR),src/ldr,res/ldr)))
 
 $(KB-NBKJ)	: ALL_LIBS := -lnbkj

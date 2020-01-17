@@ -10,6 +10,8 @@
 
 enum resource {
     R_KB_FONT,
+    R_KB_ICON,
+    R_KB_BUTTON,
     R_END
 };
 

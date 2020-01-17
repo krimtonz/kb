@@ -1,0 +1,10 @@
+load_code_stage1        = 0x80000cf0;
+load_code_stage1_hook   = 0x800019c4;
+load_code_stage2        = 0x8023DD50;
+load_code_stage2_hook   = 0x8023DDC0;
+game_update_hook        = 0x802E2B70;
+game_update             = 0x803349C0;
+overlay_append          = 0x8030ABF8;
+overlay_append_hook     = 0x802E2CD4;
+kb_vi_counter           = 0x80274578;
+bk_controller_raw       = 0x80284754;

@@ -18,7 +18,6 @@
 
 # Libraries
 *.lib
-*.a
 *.la
 *.lo
 
@@ -56,3 +55,4 @@ dkms.conf
 
 bin/
 obj/
+*.z64
