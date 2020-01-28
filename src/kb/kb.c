@@ -1,12 +1,13 @@
 #include <startup.h>
 #include <stdlib.h>
+#include <libundermine/gfx.h>
+#include <libundermine/menu.h>
+#include <libundermine/input.h>
+#include <libundermine/resource.h>
 #include "kb.h"
 #include "bk.h"
-#include "gfx.h"
-#include "menu.h"
-#include "input.h"
 #include "commands.h"
-#include "resource.h"
+#include "kbresource.h"
 
 __attribute__((section(".data")))
 kb_ctxt_t kb = {
@@ -21,7 +22,7 @@ void kb_main(void){
         int x = 16;
         int y = 200;
         gfx_printf(x, y, "%4i %4i", input_x(), input_y());
-        gfx_texture *btn_tex = resource_get(R_KB_BUTTON);
+        gfx_texture *btn_tex = resource_get(resource_handles[R_KB_BUTTON]);
         static const int8_t btns[] = { 15, 14, 12, 13, 3, 2, 0, 1, 5, 4, 11, 10, 8, 9};
         uint16_t pad = input_pressed_raw();
         for(int i = 0;i < sizeof(btns) / sizeof(*btns);i++){
@@ -73,11 +74,20 @@ static int main_menu_on_activate(event_handler_t *handler, menu_event_t event, v
 }
 
 void init(void){
-    gfx_init();
+    clear_bss();
+    do_global_ctors();
+
+    input_init(&bk_controller_raw.pad, &bk_controller_raw.x, &bk_controller_raw.y, kb_binds, KB_CMD_MAX);
+    bind_override(KB_CMD_TOGGLE_MENU);
+    bind_override(KB_CMD_RETURN);
+
+    kb_resource_init();
+    gfx_init(0x32800, resource_get(resource_handles[R_KB_FONT]), NULL);
 
     list_init(&kb.watches, sizeof(watch_t));
 
     menu_t *main_menu = &kb.main_menu;
+    menu_ctx_init(main_menu, NULL);
     menu_init(main_menu, 20, 30);
 
     main_menu->selected_item = menu_button_add(main_menu, 0, 0, "return", main_menu_on_activate, NULL);
@@ -89,18 +99,20 @@ void init(void){
     kb_binds[KB_CMD_RETURN] = make_bind(2, BUTTON_R, BUTTON_D_LEFT);
 }
 
-void _main(Gfx **a0, void *a1, void *a2){
+int _main(void){
     init_gp();
     if(!kb.ready){
         init();
     }
-    game_update(a0, a1, a2);
+    int ret = game_update();
     kb_main();
+    return ret;
 }
 
 void kb_overlay_append(Gfx **p_gfx_p, MtxF **p_mtx_p, void *a2){
     overlay_append(p_gfx_p, p_mtx_p, a2);
-    gfx_finish(p_gfx_p);
+    gfx_finish_set(p_gfx_p);
+    gfx_finish();
 }
 
 void kb_load_stage2(void *a0, void *a1, void *a2){
@@ -113,8 +125,8 @@ void kb_load_stage2(void *a0, void *a1, void *a2){
     uint32_t overlay_p = (uint32_t)&kb_overlay_append;
     overlay_p = ((overlay_p & 0xFFFFFF) >> 2 ) | 0xC000000;
     overlay_append_hook = overlay_p;
-   
-    // Should probably clear inst cache here? 
+
+    // Should probably clear inst cache here?
 }
 
 void kb_load_stage1(void *a0, void *a1, void *a2, void *a3){
@@ -127,21 +139,14 @@ void kb_load_stage1(void *a0, void *a1, void *a2, void *a3){
     // should probably clear inst cache here.
 }
 
-ENTRY _Noreturn void _start(){
+ENTRY void _start(){
     uint32_t kb_load_stage1_p = (uint32_t)&kb_load_stage1;
     kb_load_stage1_p = ((kb_load_stage1_p & 0xFFFFFF) >> 2) | 0xC000000;
     load_code_stage1_hook = kb_load_stage1_p;
-    
+
     // Should probably clear inst cache here?
 
     // continue to loader
     __asm__ volatile("j 0x80400000;"
                     ::);
-
-    // Tell gcc that were never coming back here.
-    for(;;);
 }
-
-#include <startup.c>
-#include <list/list.c>
-#include <vector/vector.c>

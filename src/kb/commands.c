@@ -1,6 +1,6 @@
 #include <stddef.h>
+#include <libundermine/input.h>
 #include "commands.h"
-#include "input.h"
 
 struct command kb_commands[KB_CMD_MAX] = {
     { "toggle menu",    COMMAND_PRESS,  NULL },

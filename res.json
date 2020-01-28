@@ -10,11 +10,5 @@
       "name": "buttons",
       "format": "ia8",
       "tile_height": 16
-    },
-    "icons.png": {
-        "type": "texture",
-        "name": "icons",
-        "format": "rgba16",
-        "tile_height":  10
     }
 }

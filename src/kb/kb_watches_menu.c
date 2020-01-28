@@ -1,8 +1,7 @@
 #include <stdlib.h>
-
-#include "menu.h"
-#include "watches.h"
-#include "resource.h"
+#include <libundermine/menu.h>
+#include <libundermine/watches.h>
+#include <libundermine/resource.h>
 #include "kb.h"
 
 struct watch_row {
@@ -155,18 +154,18 @@ static void watch_add(watch_t *watch, _Bool setpos){
     struct watch_row *row = list_push_back(&watch_rows, NULL);
     static menu_sprite_t delete_sprite = {
         NULL,   0,  0,  DEFAULT_COLOR,  DEFAULT_COLOR,
-        8,      8,      NULL,           0,  
+        8,      8,      NULL,           0,
         0,      0,      NULL
     };
 
     static menu_sprite_t anchor_sprite = {
         NULL,   2,  2,  DEFAULT_COLOR,  DEFAULT_COLOR,
-        8,      8,      NULL,           0,  
+        8,      8,      NULL,           0,
         0,      0,      NULL
     };
 
-    delete_sprite.texture = resource_get(R_KB_ICON);
-    anchor_sprite.texture = resource_get(R_KB_ICON);
+    delete_sprite.texture = resource_get(R_ICON);
+    anchor_sprite.texture = resource_get(R_ICON);
 
     row->delete_button = menu_gfx_button_add(&watches, x, y, &delete_sprite, menu_watch_delete_onactivate, row);
 

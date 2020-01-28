@@ -2,8 +2,8 @@
 #define _KB_H
 
 #include <list/list.h>
-#include "gfx.h"
-#include "menu.h"
+#include <libundermine/gfx.h>
+#include <libundermine/menu.h>
 
 typedef struct {
     _Bool       ready;

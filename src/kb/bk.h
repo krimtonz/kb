@@ -2,7 +2,7 @@
 #define _BK_H
 
 #include <stdint.h>
-#include "gu.h"
+#include <libundermine/gu.h>
 
 typedef struct{
     union{
@@ -38,7 +38,7 @@ bk_extern   uint32_t        overlay_append_hook;
 bk_extern   int32_t         bk_vi_counter;
 bk_extern   bk_controller_t bk_controller_raw;
 
-bk_extern   void        game_update         (Gfx **p_gfx_p, MtxF **p_mtx_p, void*);
+bk_extern   int         game_update         (void);
 bk_extern   void        load_code_stage2    (void*, void*, void*);
 bk_extern   void        load_code_stage1    (void *, void *, void*, void*);
 bk_extern   void        overlay_append      (Gfx **p_gfx_p, MtxF **p_mtx_p, void*);
