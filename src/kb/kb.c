@@ -8,6 +8,8 @@
 #include "bk.h"
 #include "commands.h"
 #include "kbresource.h"
+#include "start.h"
+#include "cache.h"
 
 __attribute__((section(".data")))
 kb_ctxt_t kb = {
@@ -104,7 +106,8 @@ int _main(void){
     if(!kb.ready){
         init();
     }
-    int ret = game_update();
+    _entry_data.exit_func = game_update;
+    int ret = (int)_kb_exit();
     kb_main();
     return ret;
 }
@@ -118,7 +121,7 @@ void kb_gfx_append(Gfx **p_gfx_p){
 void kb_load_stage2(void *a0, void *a1, void *a2){
     load_code_stage2(a0, a1, a2);
 
-    uint32_t main_p = (uint32_t)&_main;
+    uint32_t main_p = (uint32_t)&_kb_entry;
     main_p = ((main_p & 0xFFFFFF) >> 2) | 0xC000000;
     game_update_hook = main_p;
 
@@ -126,7 +129,8 @@ void kb_load_stage2(void *a0, void *a1, void *a2){
     overlay_p = ((overlay_p & 0xFFFFFF) >> 2 ) | 0xC000000;
     gfx_finish_hook = overlay_p;
 
-    // Should probably clear inst cache here?
+    osInvalICache((void*)game_update_hook, 4);
+    osInvalICache((void*)gfx_finish_hook, 4);
 }
 
 void kb_load_stage1(void *a0, void *a1, void *a2, void *a3){
@@ -136,17 +140,5 @@ void kb_load_stage1(void *a0, void *a1, void *a2, void *a3){
     kb_load_stage2_p = ((kb_load_stage2_p & 0xFFFFFF) >> 2) | 0xC000000;
     load_code_stage2_hook = kb_load_stage2_p;
 
-    // should probably clear inst cache here.
-}
-
-ENTRY void _start(){
-    uint32_t kb_load_stage1_p = (uint32_t)&kb_load_stage1;
-    kb_load_stage1_p = ((kb_load_stage1_p & 0xFFFFFF) >> 2) | 0xC000000;
-    load_code_stage1_hook = kb_load_stage1_p;
-
-    // Should probably clear inst cache here?
-
-    // continue to loader
-    __asm__ volatile("j 0x80400000;"
-                    ::);
+    osInvalICache((void*)load_code_stage2_hook, 4);
 }
