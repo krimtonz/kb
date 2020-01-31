@@ -109,10 +109,10 @@ int _main(void){
     return ret;
 }
 
-void kb_overlay_append(Gfx **p_gfx_p, MtxF **p_mtx_p, void *a2){
-    overlay_append(p_gfx_p, p_mtx_p, a2);
+void kb_gfx_append(Gfx **p_gfx_p){
     gfx_finish_set(p_gfx_p);
     gfx_finish();
+    bk_gfx_finish(p_gfx_p);
 }
 
 void kb_load_stage2(void *a0, void *a1, void *a2){
@@ -122,9 +122,9 @@ void kb_load_stage2(void *a0, void *a1, void *a2){
     main_p = ((main_p & 0xFFFFFF) >> 2) | 0xC000000;
     game_update_hook = main_p;
 
-    uint32_t overlay_p = (uint32_t)&kb_overlay_append;
+    uint32_t overlay_p = (uint32_t)&kb_gfx_append;
     overlay_p = ((overlay_p & 0xFFFFFF) >> 2 ) | 0xC000000;
-    overlay_append_hook = overlay_p;
+    gfx_finish_hook = overlay_p;
 
     // Should probably clear inst cache here?
 }

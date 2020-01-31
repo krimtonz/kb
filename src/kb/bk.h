@@ -34,12 +34,12 @@ typedef struct{
 bk_extern   uint32_t        load_code_stage2_hook;
 bk_extern   uint32_t        game_update_hook;
 bk_extern   uint32_t        load_code_stage1_hook;
-bk_extern   uint32_t        overlay_append_hook;
+bk_extern   uint32_t        gfx_finish_hook;
 bk_extern   int32_t         bk_vi_counter;
 bk_extern   bk_controller_t bk_controller_raw;
 
 bk_extern   int         game_update         (void);
 bk_extern   void        load_code_stage2    (void*, void*, void*);
 bk_extern   void        load_code_stage1    (void *, void *, void*, void*);
-bk_extern   void        overlay_append      (Gfx **p_gfx_p, MtxF **p_mtx_p, void*);
+bk_extern   void        bk_gfx_finish       (Gfx **p_gfx_p);
 #endif
