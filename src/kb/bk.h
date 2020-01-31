@@ -2,7 +2,7 @@
 #define _BK_H
 
 #include <stdint.h>
-#include <libundermine/gu.h>
+#include <libundermine.h>
 
 typedef struct{
     union{

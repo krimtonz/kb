@@ -1,15 +1,11 @@
 #include <startup.h>
 #include <stdlib.h>
-#include <libundermine/gfx.h>
-#include <libundermine/menu.h>
-#include <libundermine/input.h>
-#include <libundermine/resource.h>
+#include <libundermine.h>
 #include "kb.h"
 #include "bk.h"
 #include "commands.h"
 #include "kbresource.h"
 #include "start.h"
-#include "cache.h"
 
 __attribute__((section(".data")))
 kb_ctxt_t kb = {

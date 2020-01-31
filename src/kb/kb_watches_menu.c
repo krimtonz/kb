@@ -1,7 +1,5 @@
 #include <stdlib.h>
-#include <libundermine/menu.h>
-#include <libundermine/watches.h>
-#include <libundermine/resource.h>
+#include <libundermine.h>
 #include "kb.h"
 
 struct watch_row {

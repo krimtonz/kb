@@ -1,5 +1,5 @@
 #include <stddef.h>
-#include <libundermine/input.h>
+#include <libundermine.h>
 #include "commands.h"
 
 struct command kb_commands[KB_CMD_MAX] = {

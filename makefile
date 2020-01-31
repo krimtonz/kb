@@ -19,7 +19,7 @@ RESDESC         = res.json
 ADDRESS         = 0x80400060
 ADDRESS_LDR     = 0x80000400
 ALL_CPPFLAGS    = $(CPPFLAGS)
-ALL_CFLAGS      = -c -I. -MMD -MP -std=gnu11 -Wall -ffunction-sections -fdata-sections -O1
+ALL_CFLAGS      = -c -Ilibundermine/include -MMD -MP -std=gnu11 -Wall -ffunction-sections -fdata-sections -O1
 ALL_LDFLAGS     = -T gl-n64.ld -L$(LIBDIR) -Llibundermine/lib/libundermine-f3dex -nostartfiles -specs=nosys.specs -Wl,--gc-sections -O1 $(LDFLAGS)
 ALL_LIBS        = $(LIBS)
 

@@ -6,9 +6,7 @@
 
 #ifndef _KZRESOURCE_H
 #define _KZRESOURCE_H
-#include <libundermine/gfx.h>
-#include <libundermine/menu.h>
-#include <libundermine/resource.h>
+#include <libundermine.h>
 
 enum resource {
     R_KB_FONT,
