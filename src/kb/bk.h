@@ -39,7 +39,7 @@ bk_extern   int32_t         bk_vi_counter;
 bk_extern   bk_controller_t bk_controller_raw;
 
 bk_extern   int         game_update         (void);
-bk_extern   void        load_code_stage2    (void*, void*, void*);
-bk_extern   void        load_code_stage1    (void *, void *, void*, void*);
+bk_extern   void        load_code_stage2    (void);
+bk_extern   void        load_code_stage1    (void);
 bk_extern   void        bk_gfx_finish       (Gfx **p_gfx_p);
 #endif

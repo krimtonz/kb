@@ -13,7 +13,7 @@ SRCDIR          = src
 OBJDIR          = obj
 BINDIR          = bin
 LIBDIR          = lib
-KB_VERSIONS     = NBKJ NBKE
+KB_VERSIONS     = NBKJ NBKE NBKP
 RESDESC         = res.json
 
 ADDRESS         = 0x80400060
@@ -28,6 +28,7 @@ LDR             = $(foreach v,$(KB_VERSIONS),ldr-kb-$(v))
 
 KB-NBKJ         = $(OBJ-kb-NBKJ) $(ELF-kb-NBKJ)
 KB-NBKE			= $(OBJ-kb-NBKE) $(ELF-kb-NBKE)
+KB-NBKP			= $(OBJ-kb-NBKP) $(ELF-kb-NBKP)
 
 all	            : $(KB)
 clean           :
@@ -95,3 +96,4 @@ $(foreach v,$(KB_VERSIONS),$(eval $(call bin_template,ldr-kb-$(v),$(v),ldr,$(ADD
 
 $(KB-NBKJ)	    : LIBS := -lnbkj -Wl,--whole-archive -lundermine-f3dex -Wl,--no-whole-archive
 $(KB-NBKE)	    : LIBS := -lnbke -Wl,--whole-archive -lundermine-f3dex -Wl,--no-whole-archive
+$(KB-NBKP)	    : LIBS := -lnbkp -Wl,--whole-archive -lundermine-f3dex -Wl,--no-whole-archive
