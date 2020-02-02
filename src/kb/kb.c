@@ -115,7 +115,7 @@ void kb_gfx_append(Gfx **p_gfx_p){
 }
 
 void kb_load_stage2(void){
-    load_code_stage2(void);
+    load_code_stage2();
 
     uint32_t main_p = (uint32_t)&_kb_entry;
     main_p = ((main_p & 0xFFFFFF) >> 2) | 0xC000000;
@@ -130,7 +130,7 @@ void kb_load_stage2(void){
 }
 
 void kb_load_stage1(void){
-    load_code_stage1(void);
+    load_code_stage1();
 
     uint32_t kb_load_stage2_p = (uint32_t)&kb_load_stage2;
     kb_load_stage2_p = ((kb_load_stage2_p & 0xFFFFFF) >> 2) | 0xC000000;
