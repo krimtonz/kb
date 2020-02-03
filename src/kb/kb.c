@@ -89,7 +89,8 @@ void init(void){
     menu_init(main_menu, 20, 30);
 
     main_menu->selected_item = menu_button_add(main_menu, 0, 0, "return", main_menu_on_activate, NULL);
-    menu_submenu_add(main_menu, 0, 1, "watches", create_watches_menu());
+    menu_submenu_add(main_menu, 0, 1, "warps", create_warps_menu());
+    menu_submenu_add(main_menu, 0, 2, "watches", create_watches_menu());
 
     kb.menu_active = 0;
     kb.ready = 1;
@@ -125,8 +126,8 @@ void kb_load_stage2(void){
     overlay_p = ((overlay_p & 0xFFFFFF) >> 2 ) | 0xC000000;
     gfx_finish_hook = overlay_p;
 
-    osInvalICache((void*)game_update_hook, 4);
-    osInvalICache((void*)gfx_finish_hook, 4);
+    osInvalICache((void*)&game_update_hook, 4);
+    osInvalICache((void*)&gfx_finish_hook, 4);
 }
 
 void kb_load_stage1(void){
@@ -136,5 +137,5 @@ void kb_load_stage1(void){
     kb_load_stage2_p = ((kb_load_stage2_p & 0xFFFFFF) >> 2) | 0xC000000;
     load_code_stage2_hook = kb_load_stage2_p;
 
-    osInvalICache((void*)load_code_stage2_hook, 4);
+    osInvalICache((void*)&load_code_stage2_hook, 4);
 }
