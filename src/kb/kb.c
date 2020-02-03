@@ -125,8 +125,8 @@ void kb_load_stage2(void){
     overlay_p = ((overlay_p & 0xFFFFFF) >> 2 ) | 0xC000000;
     gfx_finish_hook = overlay_p;
 
-    osInvalICache((void*)game_update_hook, 4);
-    osInvalICache((void*)gfx_finish_hook, 4);
+    osInvalICache((void*)&game_update_hook, 4);
+    osInvalICache((void*)&gfx_finish_hook, 4);
 }
 
 void kb_load_stage1(void){
@@ -136,5 +136,5 @@ void kb_load_stage1(void){
     kb_load_stage2_p = ((kb_load_stage2_p & 0xFFFFFF) >> 2) | 0xC000000;
     load_code_stage2_hook = kb_load_stage2_p;
 
-    osInvalICache((void*)load_code_stage2_hook, 4);
+    osInvalICache((void*)&load_code_stage2_hook, 4);
 }
