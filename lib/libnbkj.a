@@ -1,7 +1,7 @@
-load_code_stage1        = 0x80000cf0;
-load_code_stage1_hook   = 0x800019c4;
-load_code_stage2        = 0x8023DD50;
-load_code_stage2_hook   = 0x8023DDC0;
+load_code_stage1        = 0x80001BF0; 
+load_code_stage1_hook   = 0x8000051c;
+load_code_stage2        = 0x80250058;
+load_code_stage2_hook   = 0x8023d89c;
 game_update_hook        = 0x8023DA74;
 game_update             = 0x802E3584;
 bk_gfx_finish           = 0x80252B30;
