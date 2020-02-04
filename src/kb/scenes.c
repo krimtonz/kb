@@ -482,7 +482,7 @@ static kb_scene_t CCW_hub_scene[1] = {
     { "season hub",
         0x40, 5,
         (kb_entrance_t[]){
-            {0x04, "from grunty's lair"},
+            {0x07, "from grunty's lair"},
             {0x02, "from spring"},
             {0x03, "from summer"},
             {0x04, "from autumn"},
