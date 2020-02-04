@@ -42,4 +42,6 @@ bk_extern   int         game_update         (void);
 bk_extern   void        load_code_stage2    (void);
 bk_extern   void        load_code_stage1    (void);
 bk_extern   void        bk_gfx_finish       (Gfx **p_gfx_p);
+bk_extern   void        bk_take_me_there    (uint32_t map, uint32_t exit, uint32_t warp_type);
+
 #endif

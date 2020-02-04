@@ -14,6 +14,7 @@ typedef struct {
 
 extern kb_ctxt_t kb;
 
+menu_t *create_warps_menu(void);
 menu_t *create_watches_menu (void);
 
 #endif

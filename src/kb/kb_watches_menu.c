@@ -195,7 +195,7 @@ static void watch_add(watch_t *watch, _Bool setpos){
 
 static int watches_button_add_onactivate(event_handler_t *handler, menu_event_t event, void **event_data){
     if(kb.watches.size >= WATCHES_MAX){
-        //kz_log("watches limit reached");
+        //kz_log("watches limit reached");(uint32_t)
         return 1;
     }
     watch_t *watch = list_push_back(&kb.watches, NULL);

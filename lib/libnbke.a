@@ -8,3 +8,6 @@ bk_gfx_finish           = 0x80253DE0;
 gfx_finish_hook         = 0x802E3B7C;
 kb_vi_counter           = 0x80274578; /* need nbke */
 bk_controller_raw       = 0x802812B8;
+
+
+bk_take_me_there        = 0x802E4078;
