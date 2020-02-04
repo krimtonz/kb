@@ -24,5 +24,6 @@ struct kb_entrance {
 } ;
 
 extern kb_scene_category_t    scene_categories[13];
+extern kb_scene_category_t    CCW_categories[5];
 
 #endif
