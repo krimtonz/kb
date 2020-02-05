@@ -689,6 +689,24 @@ static kb_scene_t lair_scenes[21] = {
             {0x5, "from 180 note door lobby"},
         }
     },
+    { "red cauldron room", //incomplete
+        0x6C, 1,
+        (kb_entrance_t[]){
+            {0x1, "???"},
+        }
+    },
+    { "clanker's cavern lobby", //incomplete
+        0x70, 1,
+        (kb_entrance_t[]){
+            {0x1, "???"},
+        }
+    },
+    { "treasure trove cove lobby", //incomplete
+        0x6D, 1,
+        (kb_entrance_t[]){
+            {0x1, "???"},
+        }
+    },
     { "180 note door lobby",
         0x71, 4,
         (kb_entrance_t[]){
@@ -721,8 +739,14 @@ static kb_scene_t lair_scenes[21] = {
             {0x5, "from 350 note door lobby"},
         }
     },
-    { "GV puzzle", //incomplete
+    { "350 note door lobby", //incomplete
         0x74, 1,
+        (kb_entrance_t[]){
+            {0x1, "???"},
+        }
+    },
+    { "mad monster mansion lobby", //incomplete
+        0x6E, 1,
         (kb_entrance_t[]){
             {0x1, "???"},
         }
@@ -745,43 +769,19 @@ static kb_scene_t lair_scenes[21] = {
             {0x1, "???"},
         }
     },
-    { "Red Cauldron Room", //incomplete
-        0x6C, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
-    { "Crypt", //incomplete
+    { "crypt", //incomplete
         0x71, 1,
         (kb_entrance_t[]){
             {0x1, "???"},
         }
     },
-    { "TTC lobby", //incomplete
-        0x6D, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
-    { "CC lobby", //incomplete
-        0x70, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
-    { "MMM lobby", //incomplete
-        0x6E, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
-    { "RBB lobby", //incomplete
+    { "rusty bucket bay lobby", //incomplete
         0x77, 1,
         (kb_entrance_t[]){
             {0x1, "???"},
         }
     },
-    { "CCW lobby", //incomplete
+    { "click clock wood lobby", //incomplete
         0x77, 1,
         (kb_entrance_t[]){
             {0x1, "???"},
@@ -793,14 +793,14 @@ static kb_scene_t lair_scenes[21] = {
             {0x1, "???"},
         }
     },
-    { "Grunty fight", //incomplete
-        0x90, 1,
+    { "furnace fun", //incomplete
+        0x8E, 1,
         (kb_entrance_t[]){
             {0x1, "???"},
         }
     },
-    { "Furnace Fun", //incomplete
-        0x8E, 1,
+    { "gruntilda boss fight", //incomplete
+        0x90, 1,
         (kb_entrance_t[]){
             {0x1, "???"},
         }
