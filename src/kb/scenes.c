@@ -9,10 +9,11 @@ static kb_scene_t SM_scenes[2] = {
             {0x13, "from gruntilda's lair"},
         }
     },
-    { "banjo's house", // incomplete? Bottles painting?
-        0x8C, 1,
+    { "banjo's house",
+        0x8C, 6,
         (kb_entrance_t[]){
             {0x01, "from spiral mountain"},
+            {0x02, "from bottles painting"},
         }
     },
 };
@@ -684,28 +685,31 @@ static kb_scene_t lair_scenes[21] = {
         0x6B, 5,
         (kb_entrance_t[]){
             {0x1, "from 50 note door lobby"},
-            {0x2, "from red cauldron lobby"},
+            {0x2, "from red cauldron room"},
             {0x3, "from treasure trove cove lobby"},
             {0x4, "from clanker's cavern lobby"},
             {0x5, "from 180 note door lobby"},
         }
     },
-    { "red cauldron room", //incomplete
-        0x6C, 1,
+    { "red cauldron room",
+        0x6C, 2,
+        (kb_entrance_t[]){
+            {0x1, "from the entrance"},
+            {0x8, "from red cauldron"},
+        }
+    },
+    { "treasure trove cove lobby",
+        0x6D, 2,
         (kb_entrance_t[]){
             {0x1, "from ccw puzzle lobby"},
+            {0x4, "from treasure trove cove"},
         }
     },
     { "clanker's cavern lobby", //incomplete
-        0x70, 1,
+        0x70, 2,
         (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
-    { "treasure trove cove lobby", //incomplete
-        0x6D, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x1, "from ccw puzzle lobby"},
+            {0x2, "from clanker's cavern"},
         }
     },
     { "180 note door lobby",
@@ -717,7 +721,7 @@ static kb_scene_t lair_scenes[21] = {
             {0x4, "from the vase"},
         }
     },
-    { "bubblegoop swamp lobby", // incomplete
+    { "bubblegoop swamp lobby", // incomplete - where is the fep puzzle entrance?
         0x72, 2,
         (kb_entrance_t[]){
             {0x1, "from 180 note door lobby"},
@@ -725,7 +729,7 @@ static kb_scene_t lair_scenes[21] = {
         }
     },
     { "gobi's valley lobby",
-        0x6E, 4,
+        0x6E, 3,
         (kb_entrance_t[]){
             {0x1, "from 260 note door"},
             {0x3, "from gobi's valley"},
@@ -759,13 +763,6 @@ static kb_scene_t lair_scenes[21] = {
             {0x3, "from water switch room"},
         }
     },
-    { "MMM & RBB puzzles", //incomplete
-        0x78, 2,
-        (kb_entrance_t[]){
-            {0x0, "rusty bucket bay puzzle area"},
-            {0x1, "mad monster mansion puzzle area"},
-        }
-    },
     { "450 note door lobby", //incomplete
         0x76, 4,
         (kb_entrance_t[]){
@@ -775,42 +772,64 @@ static kb_scene_t lair_scenes[21] = {
             {0x2, "from above 640 note door"},
         }
     },
-    { "810 note door", //incomplete
-        0x93, 1,
+    { "mmm & rbb puzzle rooms", //incomplete
+        0x78, 2,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x0, "rusty bucket bay puzzle area"},
+            {0x1, "mad monster mansion puzzle area"},
         }
     },
     { "rusty bucket bay lobby", //incomplete
-        0x77, 1,
+        0x77, 4,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x1, "from 450 note door lobby"},
+            {0x3, "from rusty bucket bay puzzle"},
+            {0x4, "from mad monster mansion puzzle"},
+            {0x2, "from rusty bucket bay"},
         }
     },
     { "click clock wood lobby", //incomplete
-        0x77, 1,
+        0x79, 5,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x1, "from 640 note door"},
+            {0x2, "from 450 note door lobby - upper"},
+            {0x3, "from 765 note door lobby"},
+            {0x6, "from click clock wood"},
+            {0x8, "from red cauldron"},
         }
     },
-    { "Floor 3 Area 4?", //todo: better name //incomplete
-        0x80, 1,
+    { "765 note door lobby",
+        0x80, 2,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x1, "from click clock wood lobby"},
+            {0x2, "from furnace fun"},
         }
     },
     { "furnace fun", //incomplete
-        0x8E, 1,
+        0x8E, 5,
         (kb_entrance_t[]){
             {0x1, "from gruntilda's lair"},
+            {0x2, "from gruntilda's lair (cutscene)"},
+            {0x4, "from the credits"},
+            {0x5, "from 810 note door lobby"},
+            {0x8, "from yellow cauldron"},
         }
     },
-    { "gruntilda boss fight", //incomplete
+    { "810 note door", //incomplete
+        0x93, 4,
+        (kb_entrance_t[]){
+            {0x1, "from dingpot"},
+            {0x2, "from dingpot (cutscene)"},
+            {0x5, "from furnace fun"},
+            {0x8, "from yellow cauldron"},
+        }
+    },
+    { "gruntilda boss fight",
         0x90, 1,
         (kb_entrance_t[]){
             {0x1, "from dingpot"},
         }
-    },
+    }
 };
 
 static kb_scene_t title_cutscenes[2] = {
@@ -995,7 +1014,7 @@ kb_scene_category_t scene_categories[] = {
     { "mad monster mansion",    16, 0, MMM_scenes },
     { "rusty bucket bay",       14, 0, RBB_scenes },
     { "click clock wood",        5, 1, CCW_categories },
-    { "gruntilda's lair",       21, 0, lair_scenes },
+    { "gruntilda's lair",       20, 0, lair_scenes },
     { "cutscenes",               5, 1, cutscene_categories },
     { "file select",             1, 0, file_select_scene },
 };
