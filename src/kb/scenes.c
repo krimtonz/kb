@@ -672,11 +672,12 @@ static kb_scene_t lair_scenes[21] = {
         }
     },
     { "50 note door lobby",
-        0x6A, 3,
+        0x6A, 4,
         (kb_entrance_t[]){
             {0x1, "from 50 note door"},
-            {0x28, "from purple cauldron"},
+            {0x08, "from purple cauldron"},
             {0x0, "from ccw puzzle lobby"},
+            {0x02, "from purple cauldron"},
         }
     },
     { "click clock wood puzzle lobby",
@@ -732,45 +733,50 @@ static kb_scene_t lair_scenes[21] = {
         }
     },
     { "freezeezy peak lobby", // incomplete
-        0x6F, 3,
+        0x6F, 6,
         (kb_entrance_t[]){
             {0x1, "from gobi's valley lobby"},
+            {0x6, "from freezeezy peak"},
             {0x2, "from 450 note door lobby"},
             {0x5, "from 350 note door lobby"},
+            {0x8, "from purple cauldron"},
+            {0x9, "from green cauldron"},
         }
     },
     { "350 note door lobby", //incomplete
-        0x74, 1,
+        0x74, 3,
         (kb_entrance_t[]){
+            {0x2, "from freezeezy peak lobby"},
             {0x1, "from mad monster mansion lobby"},
+            {0x3, "from cheato"},
         }
     },
     { "mad monster mansion lobby", //incomplete
-        0x6E, 1,
+        0x75, 3,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x1, "from 350 note door lobby"},
+            {0x2, "from mad monster mansion"},
+            {0x3, "from water switch room"},
         }
     },
     { "MMM & RBB puzzles", //incomplete
-        0x78, 1,
+        0x78, 2,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x0, "rusty bucket bay puzzle area"},
+            {0x1, "mad monster mansion puzzle area"},
         }
     },
-    { "640 note door", //incomplete
-        0x76, 1,
+    { "450 note door lobby", //incomplete
+        0x76, 4,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x1, "from freezeezy peak lobby"},
+            {0x4, "from rusty bucket bay lobby"},
+            {0x3, "from 640 note door"},
+            {0x2, "from above 640 note door"},
         }
     },
     { "810 note door", //incomplete
         0x93, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
-    { "crypt", //incomplete
-        0x71, 1,
         (kb_entrance_t[]){
             {0x1, "???"},
         }
