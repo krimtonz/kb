@@ -810,12 +810,12 @@ static kb_scene_t lair_scenes[21] = {
         (kb_entrance_t[]){
             {0x1, "from gruntilda's lair"},
             {0x2, "from gruntilda's lair (cutscene)"},
-            {0x4, "from the credits"},
+            {0x4, "from after the credits"},
             {0x5, "from 810 note door lobby"},
             {0x8, "from yellow cauldron"},
         }
     },
-    { "810 note door", //incomplete
+    { "810 note door lobby", //incomplete
         0x93, 4,
         (kb_entrance_t[]){
             {0x1, "from dingpot"},
