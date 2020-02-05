@@ -6,7 +6,7 @@ static kb_scene_t SM_scenes[2] = {
         0x01, 2,
         (kb_entrance_t[]){
             {0x12, "from banjo's house"},
-            {0x13, "from grunty's lair"},
+            {0x13, "from gruntilda's lair"},
         }
     },
     { "banjo's house",
@@ -21,24 +21,24 @@ static kb_scene_t MM_scenes[3] = {
     { "mumbo's mountain",
         0x02, 5,
         (kb_entrance_t[]){
-            {0x05, "from grunty's lair"},
+            {0x05, "from gruntilda's lair"},
             {0x01, "from mumbo's skull"},
             {0x02, "from ticker's tower - lower"},
             {0x03, "from ticker's tower - upper"},
             {0x04, "witch switch cutscene"},
         }
     },
-    { "mumbo's skull",
+    { "inside mumbo's skull",
         0x0E, 1,
         (kb_entrance_t[]){
             {0x01, ""},
         }
     },
-    { "ticker's tower",
+    { "inside ticker's tower",
         0x0C, 2,
         (kb_entrance_t[]){
-            {0x01, "from spiral mountain - upper"},
-            {0x02, "from spiral mountain - lower"},
+            {0x02, "bottom entrance"},
+            {0x01, "top entrance"},
         }
     },
 };
@@ -47,39 +47,39 @@ static kb_scene_t TTC_scenes[5] = {
     { "treasure trove cove",
         0x07, 11,
         (kb_entrance_t[]){
-            {0x04, "from grunty's lair"},
+            {0x04, "from gruntilda's lair"},
+            {0x0A, "from nipper's shell"},
             {0x03, "from sandcastle"},
             {0x06, "from blubber's ship - top"},
             {0x07, "from blubber's ship - side"},
-            {0x08, "to lighthouse - top"},
-            {0x0A, "from nipper's shell"},
-            {0x0C, "to lighthouse - bottom"},
-            {0x0E, "to stair alcove - top"},
-            {0x0F, "to stair alcove - bottom"},
-            {0x14, "witch switch"},
+            {0x08, "from lighthouse - top"},
+            {0x0C, "from lighthouse - bottom"},
+            {0x0E, "from stair alcove - top"},
+            {0x0F, "from stair alcove - bottom"},
+            {0x14, "witch switch cutscene"},
             {0x80, "from sharkfood island"},
         }
     },
-    { "blubber's ship",
+    { "inside blubber's ship",
         0x05, 2,
         (kb_entrance_t[]){
-            {0x05, "top"},
-            {0x06, "side"},
+            {0x05, "from top entrance"},
+            {0x06, "from side entrance"},
         }
     },
-    { "nipper's shell",
+    { "inside nipper's shell",
         0x06, 1,
         (kb_entrance_t[]){
             {0x01, ""},
         }
     },
-    { "sandcastle", 
+    { "insde the sandcastle",
         0x0A, 1,
         (kb_entrance_t[]){
             {0x01, ""},
         }
     },
-    { "sharkfood island",
+    { "insdie sharkfood island",
         0x8f, 1,
         (kb_entrance_t[]){
             {0x01, ""},
@@ -91,7 +91,7 @@ static kb_scene_t CC_scenes[4] = {
     { "clanker's cavern",
         0x0B, 5,
         (kb_entrance_t[]){
-            {0x5, "from grunty's lair"},
+            {0x5, "from gruntilda's lair"},
             {0x1, "left tooth"},
             {0x2, "right tooth"},
             {0x3, "left gill"},
@@ -102,14 +102,14 @@ static kb_scene_t CC_scenes[4] = {
         0x21, 2,
         (kb_entrance_t[]){
             {0x01, "from blowhole"},
-            {0x14, "witch switch"},
+            {0x14, "witch switch cutscene"},
         }
     },
     { "insides - mouth and rings",
         0x22, 7,
         (kb_entrance_t[]){
             {0x1, "from slow sawblades - jiggy"},
-            {0x2, "from slow sawblades - witch switch"},
+            {0x2, "from slow sawblades - witch switch cutscene"},
             {0x3, "from fast sawblades"},
             {0x4, "right gill"},
             {0x5, "left gill"},
@@ -128,18 +128,18 @@ static kb_scene_t CC_scenes[4] = {
 static kb_scene_t BGS_scenes[4] = {
     { "bubblegloop swamp",
         0x0D, 6,
-        (kb_entrance_t[]){ 
-            {0x02, "from grunty's lair"},
+        (kb_entrance_t[]){
+            {0x02, "from gruntilda's lair"},
             {0x03, "from tanktup"},
             {0x04, "from mr. vile - right nostril"},
             {0x05, "from mr. vile - left nostril"},
             {0x06, "from Mumbo's skull"},
-            {0x14, "witch switch"},
+            {0x14, "witch switch cutscene"},
         }
     },
-    { "mumbo's skull",
+    { "inside mumbo's skull",
         0x47, 1,
-        (kb_entrance_t[]){ 
+        (kb_entrance_t[]){
             {0x1, ""},
         }
     },
@@ -152,7 +152,7 @@ static kb_scene_t BGS_scenes[4] = {
     },
     { "tanktup",
         0x11, 1,
-        (kb_entrance_t[]){ 
+        (kb_entrance_t[]){
             {0x1, ""},
         }
     },
@@ -162,34 +162,34 @@ static kb_scene_t FP_scenes[5] = {
     { "freezeezy peak",
         0x27, 7,
         (kb_entrance_t[]){
-            {0x01, "from grunty's lair"},
+            {0x01, "from gruntilda's lair"},
             {0x06, "from wozza's cave"},
             {0x07, "from mumbo's skull"},
             {0x08, "from boggy's igloo"},
             {0x09, "from xmas tree"},
             {0x0D, "xmas tree star"},
-            {0x15, "witch switch"},
+            {0x15, "witch switch cutscene"},
         }
     },
-    { "Mumbo's skull",
+    { "inside mumbo's skull",
         0x48, 1,
         (kb_entrance_t[]){
             {0x1, ""},
         }
     },
-    { "Boggy's Igloo",
+    { "inside boggy's Igloo",
         0x41, 1,
         (kb_entrance_t[]){
             {0x1, ""},
         }
     },
-    { "Xmas tree",
+    { "inside the christmas tree",
         0x53, 1,
         (kb_entrance_t[]){
             {0x1, ""},
         }
     },
-    { "Wozza's cave",
+    { "inside wozza's cave",
         0x7F, 1,
         (kb_entrance_t[]){
             {0x1, ""},
@@ -201,7 +201,7 @@ static kb_scene_t GV_scenes[7] = {
     { "gobi's valley",
         0x12, 8,
         (kb_entrance_t[]){
-            {0x8, "from grunty's lair"},
+            {0x8, "from gruntilda's lair"},
             {0x2, "from jinxy"},
             {0x3, "from matching pyramid"},
             {0x4, "sandybutt's pyramid - entrance"},
@@ -211,20 +211,20 @@ static kb_scene_t GV_scenes[7] = {
             {0xA, "SnS chamber"},
         }
     },
-    { "matching pyramid",
+    { "inside matching pyramid",
         0x13, 1,
         (kb_entrance_t[]){
             {0x1, ""},
         }
     },
-    { "king sandybutt's pyramid",
+    { "inside king sandybutt's pyramid",
         0x14, 2,
         (kb_entrance_t[]){
             {0x01, "entrance"},
-            {0x14, "witch switch"},
+            {0x14, "witch switch cutscene"},
         }
     },
-    { "water pyramid",
+    { "inside water pyramid",
         0x15, 3,
         (kb_entrance_t[]){
             {0x1, "cutscene return"},
@@ -232,13 +232,13 @@ static kb_scene_t GV_scenes[7] = {
             {0x6, "bottom"},
         }
     },
-    { "rubee's pyramid", 
+    { "inside rubee's pyramid",
         0x16, 1,
         (kb_entrance_t[]){
             {0x7, ""},
         }
     },
-    { "jinxy",
+    { "inside jinxy",
         0x1A, 1,
         (kb_entrance_t[]){
             {0x02, ""},
@@ -256,7 +256,7 @@ static kb_scene_t MMM_scenes[16] = {
     { "mad monster mansion",
         0x1B, 18,
         (kb_entrance_t[]){
-            {0x14, "from grunty's lair"},
+            {0x14, "from gruntilda's lair"},
             {0x01, "from dining room"},
             {0x03, "well - top"},
             {0x04, "from tumblar's shed"},
@@ -276,45 +276,45 @@ static kb_scene_t MMM_scenes[16] = {
             {0x13, "well - bottom"},
         }
     },
-    { "mumbo's skull",
+    { "inside mumbo's skull",
         0x30, 1,
         (kb_entrance_t[]){
             {0x1, ""},
         }
     },
-    { "church",
+    { "inside the church",
         0x1C, 2,
         (kb_entrance_t[]){
             {0x01, "entrance"},
-            {0x14, "witch switch"},
+            {0x14, "witch switch cutscene"},
         }
     },
-    { "cellar",
+    { "inside the cellar",
         0x1D, 1,
         (kb_entrance_t[]){
             {0x1, ""},
         }
     },
-    { "tumblar's shed",
+    { "inside tumblar's shed",
         0x24, 1,
         (kb_entrance_t[]){
             {0x1, ""},
         }
     },
-    { "well",
+    { "inside the well",
         0x25, 2,
         (kb_entrance_t[]){
             {0x1, "top"},
             {0x4, "bottom - pumpkin"},
         }
     },
-    { "dining room", 
+    { "dining room",
         0x26, 1,
         (kb_entrance_t[]){
             {0x2, "chimney"},
         }
     },
-    { "blue egg room", 
+    { "blue egg room",
         0x28, 1,
         (kb_entrance_t[]){
             {0x1, ""},
@@ -376,7 +376,7 @@ static kb_scene_t RBB_scenes[14] = {
     { "rusty bucket bay",
         0x31, 15,
         (kb_entrance_t[]){
-            {0x10, "from grunty's lair"},
+            {0x10, "from gruntilda's lair"},
             {0x01, "from captain quarters"},
             {0x02, "from crew quarters"},
             {0x03, "from engine room - button room"},
@@ -393,7 +393,7 @@ static kb_scene_t RBB_scenes[14] = {
             {0x13, "from anchor room"},
         }
     },
-    { "engine Room",
+    { "the engine room",
         0x34, 2,
         (kb_entrance_t[]){
             {0x1, "gears room"},
@@ -406,7 +406,7 @@ static kb_scene_t RBB_scenes[14] = {
             {0x1, ""},
         }
     },
-    { "warehouse",
+    { "inside the warehouse",
         0x36, 2,
         (kb_entrance_t[]){
             {0x1, "doors"},
@@ -481,7 +481,7 @@ static kb_scene_t CCW_hub_scene[1] = {
     { "season hub",
         0x40, 5,
         (kb_entrance_t[]){
-            {0x07, "from grunty's lair"},
+            {0x07, "from gruntilda's lair"},
             {0x02, "from spring"},
             {0x03, "from summer"},
             {0x04, "from autumn"},
@@ -603,7 +603,7 @@ static kb_scene_t CCW_autumn_scenes[6] = {
             {0x2, "window"},
         }
     },
-    { "flooded room", 
+    { "flooded room",
         0x63, 1,
         (kb_entrance_t[]){
             {0x1, ""},
@@ -630,7 +630,7 @@ static kb_scene_t CCW_winter_scenes[6] = {
             {0x15, "winter switch"},
         }
     },
-    { "mumbo's skull", 
+    { "mumbo's skull",
         0x4D, 1,
         (kb_entrance_t[]){
             {0x1, ""},
@@ -663,34 +663,62 @@ static kb_scene_t CCW_winter_scenes[6] = {
 };
 
 static kb_scene_t lair_scenes[21] = {
-    { "Grunty fight", //incomplete
-        0x90, 1,
+    { "mumbo's mountain lobby",
+        0x69, 3,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x12, "from spiral mountain"},
+            {0x2, "from mumbo's mountain"},
+            {0x1, "from 50 note door lobby"},
         }
     },
-    { "Furnace Fun", //incomplete
-        0x8E, 1,
+    { "50 note door lobby",
+        0x6A, 3,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x1, "from 50 note door"},
+            {0x28, "from purple cauldron"},
+            {0x0, "from ccw puzzle lobby"},
         }
     },
-    { "MM puzzle & lobby", //incomplete
-        0x69, 1,
+    { "click clock wood puzzle lobby",
+        0x6B, 5,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x1, "from 50 note door lobby"},
+            {0x2, "from red cauldron lobby"},
+            {0x3, "from treasure trove cove lobby"},
+            {0x4, "from clanker's cavern lobby"},
+            {0x5, "from 180 note door lobby"},
         }
     },
-    { "TTC puzzle", //incomplete
-        0x6A, 1,
+    { "180 note door lobby",
+        0x71, 4,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x2, "from 180 note door"},
+            {0x3, "from bubblegoop swamp lobby"},
+            {0x1, "from gobi's valley lobby"},
+            {0x4, "from the vase"},
         }
     },
-    { "CCW puzzle", //incomplete
-        0x6B, 1,
+    { "bubblegoop swamp lobby", // incomplete
+        0x72, 2,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x1, "from 180 note door lobby"},
+            {0x2, "from bubblegoop swamp"},
+        }
+    },
+    { "gobi's valley lobby",
+        0x6E, 4,
+        (kb_entrance_t[]){
+            {0x1, "from 260 note door"},
+            {0x3, "from gobi's valley"},
+            {0x2, "from freezeezy peak lobby"},
+        }
+    },
+    { "freezeezy peak lobby", // incomplete
+        0x6F, 3,
+        (kb_entrance_t[]){
+            {0x1, "from gobi's valley lobby"},
+            {0x2, "from 450 note door lobby"},
+            {0x5, "from 350 note door lobby"},
         }
     },
     { "GV puzzle", //incomplete
@@ -723,12 +751,6 @@ static kb_scene_t lair_scenes[21] = {
             {0x1, "???"},
         }
     },
-    { "Grunty Statue", //incomplete
-        0x71, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
     { "Crypt", //incomplete
         0x71, 1,
         (kb_entrance_t[]){
@@ -743,24 +765,6 @@ static kb_scene_t lair_scenes[21] = {
     },
     { "CC lobby", //incomplete
         0x70, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
-    { "BGS lobby", //incomplete
-        0x72, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
-    { "FP lobby", //incomplete
-        0x6F, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
-    { "GV lobby", //incomplete
-        0x6E, 1,
         (kb_entrance_t[]){
             {0x1, "???"},
         }
@@ -785,6 +789,18 @@ static kb_scene_t lair_scenes[21] = {
     },
     { "Floor 3 Area 4?", //todo: better name //incomplete
         0x80, 1,
+        (kb_entrance_t[]){
+            {0x1, "???"},
+        }
+    },
+    { "Grunty fight", //incomplete
+        0x90, 1,
+        (kb_entrance_t[]){
+            {0x1, "???"},
+        }
+    },
+    { "Furnace Fun", //incomplete
+        0x8E, 1,
         (kb_entrance_t[]){
             {0x1, "???"},
         }
@@ -867,11 +883,11 @@ static kb_scene_t intro_cutscenes[10] = {
             {0x0, ""},
         }
     },
-    
+
 };
 
 static kb_scene_t lair_cutscene[1] = {
-    { "enter grunty's lair",
+    { "enter gruntilda's lair",
         0x82, 1,
         (kb_entrance_t[]){
             {0x0, ""},
@@ -934,7 +950,7 @@ static kb_scene_t end_cutscenes[7] = {
 };
 
 static kb_scene_t file_select_scene[1] = {
-    { "", 
+    { "",
         0x91, 1,
         (kb_entrance_t[]){
             {0x1, ""},
