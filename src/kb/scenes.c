@@ -1,6 +1,6 @@
 #include "scenes.h"
 
-
+/*scenes*/
 static kb_scene_t SM_scenes[2] = {
     { "spiral mountain",
         0x01, 2,
@@ -477,7 +477,6 @@ static kb_scene_t RBB_scenes[14] = {
 
 };
 
-
 static kb_scene_t CCW_hub_scene[1] = {
     { "season hub",
         0x40, 5,
@@ -537,7 +536,7 @@ static kb_scene_t CCW_summer_scenes[5] = {
         (kb_entrance_t[]){
             {0x01, "from season hub"},
             {0x04, "from nabnut's house - window"},
-            {0x04, "autumn switch"},
+            {0x05, "autumn switch"},
             {0x06, "from zubba's hive"},
             {0x07, "from nabnut's house - door"},
             {0x08, "from top room"},
@@ -792,25 +791,144 @@ static kb_scene_t lair_scenes[21] = {
     },
 };
 
-//incomplete
-static kb_scene_t cutscene_scenes[3] = {
-    { "start - Nintendo", //incomplete
+static kb_scene_t title_cutscenes[2] = {
+    { "start - nintendo",
         0x1E, 1,
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x0, ""},
         }
     },
-    { "start - Rareware",  //incomplete
-        0x1E, 1,
-        (kb_entrance_t[]){
-            {0x1, "???"},
-        }
-    },
-    { "end - not 100%%", //incomplete
+    { "start - rareware",
         0x1F, 1,
-        
         (kb_entrance_t[]){
-            {0x1, "???"},
+            {0x0, ""},
+        }
+    },
+};
+
+static kb_scene_t intro_cutscenes[10] = {
+    { "(Intro) Spiral A",
+        0x7D, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "(Intro) Spiral B",
+        0x8E, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "(Intro) Lair 2",
+        0x81, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "(Intro) Lair 5",
+        0x84, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "(Intro) Spiral C",
+        0x85, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "(Intro) Spiral D",
+        0x86, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "(Intro) Spiral F",
+        0x88, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "(Intro) Banjo's House 2",
+        0x89, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "(Intro) Banjo's House 3",
+        0x8a, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "(Intro) Spiral G",
+        0x94, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    
+};
+
+static kb_scene_t lair_cutscene[1] = {
+    { "enter grunty's lair",
+        0x82, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+};
+
+static kb_scene_t gameover_cutscene[1] = {
+    { "game over",
+        0x83, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+};
+
+static kb_scene_t end_cutscenes[7] = {
+    { "end - not 100%%",
+        0x20, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "end - grunty's fall",
+        0x87, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "end - 100%%",
+        0x95, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "end - 3", //todo better name character parade?
+        0x96, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "end - after mumbo's pictures", //todo better name
+        0x97, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "end - klungo pushing rock", //todo better name
+        0x98, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
+        }
+    },
+    { "(Intro) Grunty's Threat 2", //todo better name
+        0x99, 1,
+        (kb_entrance_t[]){
+            {0x0, ""},
         }
     },
 };
@@ -824,28 +942,43 @@ static kb_scene_t file_select_scene[1] = {
     },
 };
 
-kb_scene_category_t CCW_categories[5] = {
-    { "season hub",     1, CCW_hub_scene },
-    { "spring",         5, CCW_spring_scenes },
-    { "summer",         5, CCW_summer_scenes },
-    { "autumn",         6, CCW_autumn_scenes },
-    { "winter",         6, CCW_winter_scenes },
-    
 
+
+
+/*sub categories*/
+static kb_scene_category_t CCW_categories[5] = {
+    { "season hub",     1, 0, CCW_hub_scene },
+    { "spring",         5, 0, CCW_spring_scenes },
+    { "summer",         5, 0, CCW_summer_scenes },
+    { "autumn",         6, 0, CCW_autumn_scenes },
+    { "winter",         6, 0, CCW_winter_scenes },
 };
 
+static kb_scene_category_t cutscene_categories[5] = {
+    { "title screen",      2, 0, title_cutscenes},
+    { "intro",            10, 0, intro_cutscenes},
+    { "lair cutscene",     1, 0, lair_cutscene},
+    { "gameover",          1, 0, gameover_cutscene},
+    { "end",               7, 0, end_cutscenes},
+};
+
+//todo lair sub categories?
+
+
+
+/*main categories*/
 kb_scene_category_t scene_categories[] = {
-    { "spiral mountain",         2, SM_scenes },
-    { "mumbo's mountain",        3, MM_scenes },
-    { "treasure trove cove",     5, TTC_scenes },
-    { "clanker's cavern",        4, CC_scenes },
-    { "bubblegloop swamp",       4, BGS_scenes },
-    { "freezeezy peak",          5, FP_scenes },
-    { "gobi's valley",           7, GV_scenes },
-    { "mad monster mansion",    16, MMM_scenes },
-    { "rusty bucket bay",       14, RBB_scenes },
-    { "click clock wood",        0, CCW_spring_scenes },
-    { "gruntilda's lair",       21, lair_scenes },
-    { "cutscenes",               3, cutscene_scenes },
-    { "file Select",             1, file_select_scene },
+    { "spiral mountain",         2, 0, SM_scenes },
+    { "mumbo's mountain",        3, 0, MM_scenes },
+    { "treasure trove cove",     5, 0, TTC_scenes },
+    { "clanker's cavern",        4, 0, CC_scenes },
+    { "bubblegloop swamp",       4, 0, BGS_scenes },
+    { "freezeezy peak",          5, 0, FP_scenes },
+    { "gobi's valley",           7, 0, GV_scenes },
+    { "mad monster mansion",    16, 0, MMM_scenes },
+    { "rusty bucket bay",       14, 0, RBB_scenes },
+    { "click clock wood",        5, 1, CCW_categories },
+    { "gruntilda's lair",       21, 0, lair_scenes },
+    { "cutscenes",               5, 1, cutscene_categories },
+    { "file select",             1, 0, file_select_scene },
 };
