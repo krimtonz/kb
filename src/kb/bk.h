@@ -29,6 +29,16 @@ typedef struct{
     int8_t y;
 } bk_controller_t;
 
+typedef enum transformations {
+    transformation_banjo = 0x01,
+    transformation_termite = 0x02,
+    transformation_pumpkin = 0x03,
+    transformation_walrus = 0x04,
+    transformation_croc = 0x05,
+    transformation_bee = 0x06,
+    transformation_wishywashy = 0x07,
+} bk_transformation_t;
+
 #define bk_extern       extern __attribute__ ((section(".data")))
 
 bk_extern   uint32_t        load_code_stage2_hook;
@@ -38,10 +48,11 @@ bk_extern   uint32_t        gfx_finish_hook;
 bk_extern   int32_t         bk_vi_counter;
 bk_extern   bk_controller_t bk_controller_raw;
 
-bk_extern   int         game_update         (void);
-bk_extern   void        load_code_stage2    (void);
-bk_extern   void        load_code_stage1    (void);
-bk_extern   void        bk_gfx_finish       (Gfx **p_gfx_p);
-bk_extern   void        bk_take_me_there    (uint32_t map, uint32_t exit, uint32_t warp_type);
+bk_extern   int         game_update                     (void);
+bk_extern   void        load_code_stage2                (void);
+bk_extern   void        load_code_stage1                (void);
+bk_extern   void        bk_gfx_finish                   (Gfx **p_gfx_p);
+bk_extern   void        bk_take_me_there                (uint32_t map, uint32_t exit, uint32_t warp_type);
+bk_extern   void        bk_player_set_transformation    (bk_transformation_t transform);
 
 #endif
