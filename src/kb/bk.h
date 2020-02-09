@@ -54,5 +54,9 @@ bk_extern   void        load_code_stage1                (void);
 bk_extern   void        bk_gfx_finish                   (Gfx **p_gfx_p);
 bk_extern   void        bk_take_me_there                (uint32_t map, uint32_t exit, uint32_t warp_type);
 bk_extern   void        bk_transformation_set           (uint32_t transform);
+bk_extern   uint32_t    bk_idle_movement_index_get      (void);
+bk_extern   void        bk_player_movement_state_set    (uint32_t movement_state_indx);
+bk_extern   void        bk_player_model_update          (void);    
+
 
 #endif
