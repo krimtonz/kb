@@ -10,8 +10,4 @@ kb_vi_counter           = 0x80274578; /* need nbkp */
 bk_controller_raw       = 0x802810d8;
 
 bk_take_me_there        = 0x802E4268;
-<<<<<<< HEAD
-bk_player_set_transformation    = 0x8029a95c;
-=======
 bk_transformation_set   = 0x8029a95c;
->>>>>>> master

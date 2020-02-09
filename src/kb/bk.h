@@ -30,13 +30,13 @@ typedef struct{
 } bk_controller_t;
 
 typedef enum transformations {
-    transformation_banjo = 0x01,
-    transformation_termite = 0x02,
-    transformation_pumpkin = 0x03,
-    transformation_walrus = 0x04,
-    transformation_croc = 0x05,
-    transformation_bee = 0x06,
-    transformation_wishywashy = 0x07,
+    BK_TRANS_BANJO = 0x01,
+    BK_TRANS_TERMITE = 0X02,
+    BK_TRANS_PUMPKIN = 0X03,
+    BK_TRANS_WALRUS = 0X04,
+    BK_TRANS_CROC = 0X05,
+    BK_TRANS_BEE = 0X06,
+    BK_TRANS_WISHYWASHY = 0X07,
 } bk_transformation_t;
 
 #define bk_extern       extern __attribute__ ((section(".data")))
@@ -53,6 +53,6 @@ bk_extern   void        load_code_stage2                (void);
 bk_extern   void        load_code_stage1                (void);
 bk_extern   void        bk_gfx_finish                   (Gfx **p_gfx_p);
 bk_extern   void        bk_take_me_there                (uint32_t map, uint32_t exit, uint32_t warp_type);
-bk_extern   void        bk_player_set_transformation    (bk_transformation_t transform);
+bk_extern   void        bk_transformation_set           (uint32_t transform);
 
 #endif
