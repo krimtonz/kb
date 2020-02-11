@@ -2,14 +2,19 @@
 #define _SCENES_H
 #include <stdint.h>
 
-typedef struct kb_entrance  kb_entrance_t;
-typedef struct kb_scene     kb_scene_t;
+typedef struct kb_scene_category       kb_scene_category_t;
+typedef struct kb_entrance             kb_entrance_t;
+typedef struct kb_scene                kb_scene_t;
 
-typedef struct kb_scene_category {
+struct kb_scene_category {
     char        *name;
-    int          scene_cnt;
-    kb_scene_t  *scenes;
-} kb_scene_category_t;
+    uint32_t    scene_cnt; //0 if subcategory
+    uint32_t    subcategory_type; //0 if scene, 1 if category
+    union {
+        kb_scene_category_t    *categories;
+        kb_scene_t             *scenes;
+    };
+};
 
 struct kb_scene {
     char             *name;
@@ -24,6 +29,5 @@ struct kb_entrance {
 } ;
 
 extern kb_scene_category_t    scene_categories[13];
-extern kb_scene_category_t    CCW_categories[5];
 
 #endif
