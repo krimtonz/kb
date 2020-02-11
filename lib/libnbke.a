@@ -11,3 +11,8 @@ bk_controller_raw       = 0x802812B8;
 
 
 bk_take_me_there        = 0x802E4078;
+
+bk_moves_unlocked_set    = 0x80295818;
+bk_moves_unlocked_get    = 0x802957d8;
+bk_moves_has_used_set    = 0x802957bc;
+bk_moves_has_used_get    = 0x802957a0;
