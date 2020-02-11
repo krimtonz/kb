@@ -3,11 +3,11 @@ load_code_stage1_hook   = 0x8000051c;
 load_code_stage2        = 0x80250058;
 load_code_stage2_hook   = 0x8023d89c;
 game_update_hook        = 0x8023DA74;
-game_update             = 0x802E3584;
+game_update             = 0x802E3464;
 bk_gfx_finish           = 0x80252B30;
-gfx_finish_hook         = 0x802E2CDC;
-kb_vi_counter           = 0x80274578;
+gfx_finish_hook         = 0x802E2BBC;
+kb_vi_counter           = 0x80274578; /* need nbke-1.1 */
 bk_controller_raw       = 0x80284754;
 
-bk_take_me_there        = 0x802e31d8;
-bk_transformation_set   = 0x802997fC;
+bk_take_me_there        = 0x802e30b8;
+bk_transformation_set   = 0x802997d8;

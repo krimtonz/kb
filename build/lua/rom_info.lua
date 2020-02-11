@@ -11,6 +11,12 @@ roms = {
         code_ram = 0x80286F90,
         rom_id = "NBKE",
     },
+    [0xFB7FFB10] = {
+        version = "1.1",
+        region = "u",
+        code_ram = 0x80285DD0,
+        rom_id = "NBKE11",
+    },
     [0x525899C9] = {
         version = "1.0",
         region = "e",
