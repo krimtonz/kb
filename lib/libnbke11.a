@@ -10,4 +10,8 @@ kb_vi_counter           = 0x80274578; /* need nbke-1.1 */
 bk_controller_raw       = 0x80284754;
 
 bk_take_me_there        = 0x802e30b8;
-bk_transformation_set   = 0x802997d8;
+
+bk_player_model_update          = 0x80290b44;
+bk_player_movement_state_set    = 0x8029959c;
+bk_transformation_set           = 0x802997cc;
+bk_idle_movement_index_get      = 0x8029ae00;
