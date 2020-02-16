@@ -11,3 +11,9 @@ bk_controller_raw       = 0x802812B8;
 
 bk_take_me_there        = 0x802E4078;
 bk_transformation_set   = 0x8029a95c;
+
+bk_item_array           = 0x80385f30;
+bk_item_get_count       = 0x80345fa0;
+
+bk_global_flag_get      = 0x8031ff1c;
+bk_global_flag_set      = 0x80320004;
