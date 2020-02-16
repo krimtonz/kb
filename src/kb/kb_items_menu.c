@@ -2,54 +2,7 @@
 #include <libundermine.h>
 #include "kb.h"
 #include "bk.h"
-
-static struct items_data {
-    uint32_t    item_index;
-    char       *tooltip;
-};
-
-static struct items_data items_table[]={
-    { BK_ITEM_MUSIC_NOTE        , "music notes"},
-    { BK_ITEM_EGG               , "eggs"},
-    { BK_ITEM_JIGGY_LEVEL       , "jiggies"},
-    { BK_ITEM_RED_FEATHER       , "red feathers"},
-    { BK_ITEM_GOLD_FEATHER      , "gold feathers"},
-    //{ BK_ITEM_JINJO                  = 0x12, ""}, //handle differently
-    { BK_ITEM_EMPTY_HONEYCOMB   , "empty honeycomb"},
-    { BK_ITEM_HEALTH            , "health"},
-    { BK_ITEM_HEALTH_MAX        , "health (total)"},
-    { BK_ITEM_LIFE              , "lives"},
-    { BK_ITEM_AIR               , "air"},
-    { BK_ITEM_MUMBO_TOKEN_UNUSED, "mumbo tokens"},
-    { BK_ITEM_MUMBO_TOKEN_TOTAL , "mumbo tokens (total)"},
-    { BK_ITEM_JIGGY_TOTAL       , "jiggies (total)"},
-    { 0, NULL},
-};
-
-static struct items_data level_items_table[]={
-    { BK_ITEM_BLUBBERS_GOLD     , "blubber's gold"},
-    { BK_ITEM_CHIMPYS_ORANGE    , "chimpy's orange"},
-    //{ BK_ITEM_VILE_SCORE_PLAYER , "player's vile score"},
-    //{ BK_ITEM_VILE_SCORE_VILE   , "vile's vile score"},
-    //{ BK_ITEM_GRUMBLIE          , "grumblie"},
-    //{ BK_ITEM_YUMBLIE           , "yumblie"},
-    { BK_ITEM_PRESENT_GREEN     , "present (green)"},
-    { BK_ITEM_PRESENT_BLUE      , "present (blue)"},
-    { BK_ITEM_PRESENT_RED       , "present (red)"},
-    { BK_ITEM_CATEPILLAR        , "caterpillars"},
-    { BK_ITEM_ACORN             , "acorns"},
-    //{ BK_ITEM_TWINKLIE          , "twinklie score"},
-    { BK_ITEM_JOKER_CARD        , "joker cards"},
-    { 0, NULL},
-};
-
-static struct items_data timer_items_table[]={
-    { BK_ITEM_SKULL_HOURGLASS   , "skull hourglass"},
-    { BK_ITEM_PROPELLOR_TIMER   , "propellor timer"},
-    //{ BK_ITEM_CHRISTMAS_TREE_TIMER   = 0x5, ""}, //crashes game
-    { BK_ITEM_HOURGLASS         , "hourglass"},
-    { 0, NULL},
-};
+#include "items.h"
 
 
 static void item_set_count(bk_item_t item, uint32_t count){
@@ -61,7 +14,10 @@ static void item_set_count(bk_item_t item, uint32_t count){
         if(count > 8) {
             bk_global_flag_set(BK_G_FLAG_DOUBLE_HEALTH,0x01);
             clamped_cnt = 16;
+        }else{
+            bk_global_flag_set(BK_G_FLAG_DOUBLE_HEALTH,0x00);
         }
+
         if(count < 16 && bk_item_get_count(BK_ITEM_HEALTH) > count){
             item_set_count(BK_ITEM_HEALTH, count);
         }
@@ -84,14 +40,18 @@ static void item_set_count(bk_item_t item, uint32_t count){
         break; 
     case BK_ITEM_EGG:
         if( count > 100) bk_global_flag_set(BK_G_FLAG_DOUBLE_EGGS, 0x01);
+        else bk_global_flag_set(BK_G_FLAG_DOUBLE_EGGS, 0x00);
+
         if( count > 200) clamped_cnt = 200;
         break;
     case BK_ITEM_GOLD_FEATHER:
         if( count > 10) bk_global_flag_set(BK_G_FLAG_DOUBLE_GOLD_FEATHERS, 0x01);
+        else bk_global_flag_set(BK_G_FLAG_DOUBLE_GOLD_FEATHERS, 0x010);
         if( count > 20) clamped_cnt = 20;
         break;
     case BK_ITEM_RED_FEATHER:
         if( count > 50) bk_global_flag_set(BK_G_FLAG_DOUBLE_RED_FEATHERS, 0x01);
+        else bk_global_flag_set(BK_G_FLAG_DOUBLE_RED_FEATHERS, 0x010);
         if( count > 100) clamped_cnt = 100;
         break;
     case BK_ITEM_JIGGY_LEVEL:
@@ -137,7 +97,7 @@ static int item_count_update(event_handler_t *handler, menu_event_t event, void 
     return 0;
 }
 
-menu_t* create_level_items_menu(){
+static menu_t* create_level_items_menu(){
     menu_t *items_submenu = malloc(sizeof(*items_submenu));;
     menu_init(items_submenu,0,0);
     items_submenu->selected_item = menu_button_add(items_submenu,0,0,"return", menu_return, NULL);
@@ -152,7 +112,7 @@ menu_t* create_level_items_menu(){
     return items_submenu;
 }
 
-menu_t* create_items_menu(){
+static menu_t* create_inventory_menu(){
     menu_t *items_menu = malloc(sizeof(*items_menu));;
     menu_init(items_menu,0,0);
     items_menu->selected_item = menu_button_add(items_menu,0,0,"return", menu_return, NULL);
@@ -172,5 +132,50 @@ menu_t* create_items_menu(){
     menu_submenu_add(items_menu,0,end_count,"level specific items",create_level_items_menu());
     
     return items_menu;
+}
 
+static menu_t *create_jiggy_level_menu(uint32_t lvl){
+    menu_t *jiggy_submenu = malloc(sizeof(*jiggy_submenu));;
+    menu_init(jiggy_submenu,0,0);
+    jiggy_submenu->selected_item = menu_button_add(jiggy_submenu, 0, 0, "return", menu_return, NULL);
+    int y_pos = 1;
+    for(int i = 0; jiggy_table[i].jiggy_index != 0; i++){
+        if(jiggy_table[i].level == lvl){
+            menu_checkbox_add(jiggy_submenu,0,y_pos);
+            //add callback
+            menu_label_add(jiggy_submenu,2,y_pos,jiggy_table[i].tooltip);
+            y_pos++;
+        }
+    }
+    return jiggy_submenu;
+}
+
+static menu_t *create_jiggy_menu(){
+    menu_t *jiggy_submenu = malloc(sizeof(*jiggy_submenu));;
+    menu_init(jiggy_submenu,0,0);
+    jiggy_submenu->selected_item = menu_button_add(jiggy_submenu, 0, 0, "return", menu_return, NULL);
+    menu_submenu_add(jiggy_submenu, 0,  1, "mumbo's mountain", create_jiggy_level_menu(1));
+    menu_submenu_add(jiggy_submenu, 0,  2, "treasure trove cove", create_jiggy_level_menu(2));
+    menu_submenu_add(jiggy_submenu, 0,  3, "clanker's cavern", create_jiggy_level_menu(3));
+    menu_submenu_add(jiggy_submenu, 0,  4, "bubblegloop swamp", create_jiggy_level_menu(4));
+    menu_submenu_add(jiggy_submenu, 0,  5, "freezeezy peak", create_jiggy_level_menu(5));
+    menu_submenu_add(jiggy_submenu, 0,  6, "gobi's valley", create_jiggy_level_menu(7));
+    menu_submenu_add(jiggy_submenu, 0,  7, "mad monster mansion", create_jiggy_level_menu(10));
+    menu_submenu_add(jiggy_submenu, 0,  8, "rusty bucket bay", create_jiggy_level_menu(9));
+    menu_submenu_add(jiggy_submenu, 0,  9, "click clock wood", create_jiggy_level_menu(8));
+    menu_submenu_add(jiggy_submenu, 0, 10, "gruntilda's lair", create_jiggy_level_menu(6));
+    return jiggy_submenu;
+}
+
+menu_t *create_items_menu(){
+    menu_t *items_menu = malloc(sizeof(*items_menu));;
+    menu_init(items_menu,0,0);
+    items_menu->selected_item = menu_button_add(items_menu, 0, 0, "return", menu_return, NULL);
+    menu_submenu_add( items_menu, 0, 1, "inventory", create_inventory_menu());
+    menu_submenu_add( items_menu, 0, 2, "jiggies", create_jiggy_menu());
+    //menu_submenu_add( items_menu, 0, 3, "note scores", create_note_scores_menu());
+    //menu_submenu_add( items_menu, 0, 4, "mumbo tokens", create_mumbotokens_menu());
+    //menu_submenu_add( items_menu, 0, 5, "empty honeycombs", create_empty_honeycomb_menu());
+    //menu_submenu_add( items_menu, 0, 6, "in-game timers", create_ig_timers_menu());
+    return items_menu;
 }
