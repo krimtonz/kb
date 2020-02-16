@@ -4,6 +4,25 @@
 #include "bk.h"
 #include "items.h"
 
+typedef struct level_data {
+    uint32_t lvl_index;
+    char*    name;
+} level_data_t;
+
+static level_data_t ordered_levels[11]={
+    { 11, "spiral mountain"},
+    {  1, "mumbo's mountain"},
+    {  2, "treasure trove cove"},
+    {  3, "clanker's cavern"},
+    {  4, "bubblegloop swamp"},
+    {  5, "freezeezy peak"},
+    {  7, "gobi's valley"},
+    { 10, "mad monster mansion"},
+    {  9, "rusty bucket bay"},
+    {  8, "click clock wood"},
+    {  6, "gruntilda's lair"}
+};
+
 /*ITEM QUANTITIES*/
 static void item_set_count(bk_item_t item, uint32_t count){
     uint32_t clamped_cnt = count;
@@ -172,16 +191,9 @@ static menu_t *create_jiggy_menu(){
     menu_t *jiggy_submenu = malloc(sizeof(*jiggy_submenu));;
     menu_init(jiggy_submenu,0,0);
     jiggy_submenu->selected_item = menu_button_add(jiggy_submenu, 0, 0, "return", menu_return, NULL);
-    menu_submenu_add(jiggy_submenu, 0,  1, "mumbo's mountain",      create_jiggy_level_menu(1));
-    menu_submenu_add(jiggy_submenu, 0,  2, "treasure trove cove",   create_jiggy_level_menu(2));
-    menu_submenu_add(jiggy_submenu, 0,  3, "clanker's cavern",      create_jiggy_level_menu(3));
-    menu_submenu_add(jiggy_submenu, 0,  4, "bubblegloop swamp",     create_jiggy_level_menu(4));
-    menu_submenu_add(jiggy_submenu, 0,  5, "freezeezy peak",        create_jiggy_level_menu(5));
-    menu_submenu_add(jiggy_submenu, 0,  6, "gobi's valley",         create_jiggy_level_menu(7));
-    menu_submenu_add(jiggy_submenu, 0,  7, "mad monster mansion",   create_jiggy_level_menu(10));
-    menu_submenu_add(jiggy_submenu, 0,  8, "rusty bucket bay",      create_jiggy_level_menu(9));
-    menu_submenu_add(jiggy_submenu, 0,  9, "click clock wood",      create_jiggy_level_menu(8));
-    menu_submenu_add(jiggy_submenu, 0, 10, "gruntilda's lair",      create_jiggy_level_menu(6));
+    for (int i = 0; i < 10; i++) {
+         menu_submenu_add(jiggy_submenu, 0,  i+1, ordered_levels[i+1].name, create_jiggy_level_menu(ordered_levels[i+1].lvl_index));
+    }
     return jiggy_submenu;
 }
 
@@ -224,16 +236,9 @@ static menu_t *create_mumbo_token_menu(){
     menu_t *mumbo_token_submenu = malloc(sizeof(*mumbo_token_submenu));;
     menu_init(mumbo_token_submenu,0,0);
     mumbo_token_submenu->selected_item = menu_button_add(mumbo_token_submenu, 0, 0, "return", menu_return, NULL);
-    menu_submenu_add(mumbo_token_submenu, 0,  1, "mumbo's mountain",      create_mumbo_token_level_menu(1));
-    menu_submenu_add(mumbo_token_submenu, 0,  2, "treasure trove cove",   create_mumbo_token_level_menu(2));
-    menu_submenu_add(mumbo_token_submenu, 0,  3, "clanker's cavern",      create_mumbo_token_level_menu(3));
-    menu_submenu_add(mumbo_token_submenu, 0,  4, "bubblegloop swamp",     create_mumbo_token_level_menu(4));
-    menu_submenu_add(mumbo_token_submenu, 0,  5, "freezeezy peak",        create_mumbo_token_level_menu(5));
-    menu_submenu_add(mumbo_token_submenu, 0,  6, "gobi's valley",         create_mumbo_token_level_menu(7));
-    menu_submenu_add(mumbo_token_submenu, 0,  7, "mad monster mansion",   create_mumbo_token_level_menu(10));
-    menu_submenu_add(mumbo_token_submenu, 0,  8, "rusty bucket bay",      create_mumbo_token_level_menu(9));
-    menu_submenu_add(mumbo_token_submenu, 0,  9, "click clock wood",      create_mumbo_token_level_menu(8));
-    menu_submenu_add(mumbo_token_submenu, 0, 10, "gruntilda's lair",      create_mumbo_token_level_menu(6));
+    for (int i = 0; i < 10; i++) {
+        menu_submenu_add(mumbo_token_submenu, 0,  i+1, ordered_levels[i+1].name, create_mumbo_token_level_menu(ordered_levels[i+1].lvl_index));
+    }
     return mumbo_token_submenu;
 }
 
@@ -273,28 +278,53 @@ static menu_t *create_empty_honeycomb_level_menu(uint32_t lvl){
 }
 
 static menu_t *create_empty_honeycomb_menu(){
-    menu_t *empty_honeycomb_submenu = malloc(sizeof(*empty_honeycomb_submenu));;
+    menu_t *empty_honeycomb_submenu = malloc(sizeof(*empty_honeycomb_submenu));
     menu_init(empty_honeycomb_submenu,0,0);
     empty_honeycomb_submenu->selected_item = menu_button_add(empty_honeycomb_submenu, 0, 0, "return", menu_return, NULL);
-    menu_submenu_add(empty_honeycomb_submenu, 0,  1, "spiral mountain",       create_empty_honeycomb_level_menu(11));
-    menu_submenu_add(empty_honeycomb_submenu, 0,  2, "mumbo's mountain",      create_empty_honeycomb_level_menu(1));
-    menu_submenu_add(empty_honeycomb_submenu, 0,  3, "treasure trove cove",   create_empty_honeycomb_level_menu(2));
-    menu_submenu_add(empty_honeycomb_submenu, 0,  4, "clanker's cavern",      create_empty_honeycomb_level_menu(3));
-    menu_submenu_add(empty_honeycomb_submenu, 0,  5, "bubblegloop swamp",     create_empty_honeycomb_level_menu(4));
-    menu_submenu_add(empty_honeycomb_submenu, 0,  6, "freezeezy peak",        create_empty_honeycomb_level_menu(5));
-    menu_submenu_add(empty_honeycomb_submenu, 0,  7, "gobi's valley",         create_empty_honeycomb_level_menu(7));
-    menu_submenu_add(empty_honeycomb_submenu, 0,  8, "mad monster mansion",   create_empty_honeycomb_level_menu(10));
-    menu_submenu_add(empty_honeycomb_submenu, 0,  9, "rusty bucket bay",      create_empty_honeycomb_level_menu(9));
-    menu_submenu_add(empty_honeycomb_submenu, 0, 10, "click clock wood",      create_empty_honeycomb_level_menu(8));
+    for (int i = 0; i < 10; i++) {
+        menu_submenu_add( empty_honeycomb_submenu, 0,  i+1, ordered_levels[i].name, create_empty_honeycomb_level_menu(ordered_levels[i].lvl_index));
+    }
     return empty_honeycomb_submenu;
 }
+
+
+
+ /*high note scores*/
+static int high_score_callback(event_handler_t *handler, menu_event_t event, void **event_data){
+    uint32_t lvl_indx = handler->callback_data;
+    if(event == MENU_EVENT_NUMBER){
+        uint32_t value = (uint32_t)*event_data;
+        if(value > 100) value = 100;
+        (&bk_high_note_scores)[lvl_indx] = (uint8_t)value;
+        return 1;
+    }
+    else if (event == MENU_EVENT_UPDATE){
+        menu_number_set(handler->subscriber, (&bk_high_note_scores)[lvl_indx]);
+        return 1;
+    }
+    return 0;
+}
+
+static menu_t *create_high_note_score_menu(){
+    menu_t *high_score_submenu = malloc(sizeof(*high_score_submenu));
+    menu_init(high_score_submenu,0,0);
+    high_score_submenu->selected_item = menu_button_add(high_score_submenu, 0, 0, "return", menu_return, NULL);
+    for (int i = 0; i < 9; i++){
+        menu_item_t *score_num =  menu_number_input_add(high_score_submenu,0,i+1,10,3);
+        menu_label_add(high_score_submenu,4,i+1,ordered_levels[i+1].name);
+        menu_item_register_event(score_num, MENU_EVENT_NUMBER | MENU_EVENT_UPDATE, high_score_callback, ordered_levels[i+1].lvl_index);
+    }
+    return high_score_submenu;
+}
+
+
 menu_t *create_items_menu(){
     menu_t *items_menu = malloc(sizeof(*items_menu));;
     menu_init(items_menu,0,0);
     items_menu->selected_item = menu_button_add(items_menu, 0, 0, "return", menu_return, NULL);
     menu_submenu_add( items_menu, 0, 1, "inventory", create_inventory_menu());
     menu_submenu_add( items_menu, 0, 2, "jiggies", create_jiggy_menu());
-    //menu_submenu_add( items_menu, 0, 3, "note scores", create_note_scores_menu());
+    menu_submenu_add( items_menu, 0, 3, "note scores", create_high_note_score_menu());
     menu_submenu_add( items_menu, 0, 4, "mumbo tokens", create_mumbo_token_menu());
     menu_submenu_add( items_menu, 0, 5, "empty honeycombs", create_empty_honeycomb_menu());
     //menu_submenu_add( items_menu, 0, 6, "in-game timers", create_ig_timers_menu());

@@ -26,3 +26,5 @@ bk_mumbo_token_flag_set = 0x803215d0;
 
 bk_empty_honeycomb_flag_get = 0x803212e4;
 bk_empty_honeycomb_flag_set = 0x80321364;
+
+bk_high_note_scores = 0x80385ff0;
