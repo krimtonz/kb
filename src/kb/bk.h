@@ -91,4 +91,7 @@ bk_extern   uint32_t    bk_item_array;
 
 bk_extern   bool        bk_global_flag_get  (uint32_t g_flag_indx);
 bk_extern   void        bk_global_flag_set  (uint32_t g_flag_indx, bool val);
+
+bk_extern   bool        bk_jiggy_flag_get   (uint32_t jiggy_index);
+bk_extern   void        bk_jiggy_flag_set   (uint32_t jiggy_index, bool val);
 #endif

@@ -51,7 +51,7 @@ jiggy_data_t jiggy_table[]={
     { 0x01, 1, "jinjo"},
     { 0x02, 1, "ticker's tower"},
     { 0x03, 1, "mumbo's skull"},
-    { 0x03, 1, "juju"},
+    { 0x04, 1, "juju"},
     { 0x05, 1, "huts"},
     { 0x06, 1, "ruins"},
     { 0x07, 1, "hill"},

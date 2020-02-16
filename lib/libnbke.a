@@ -17,3 +17,6 @@ bk_item_get_count       = 0x80345fa0;
 
 bk_global_flag_get      = 0x8031ff1c;
 bk_global_flag_set      = 0x80320004;
+
+bk_jiggy_flag_get   = 0x80320fe0;
+bk_jiggy_flag_set   = 0x8032108c;
