@@ -23,3 +23,6 @@ bk_jiggy_flag_set   = 0x8032108c;
 
 bk_mumbo_token_flag_get = 0x80321544;
 bk_mumbo_token_flag_set = 0x803215d0;
+
+bk_empty_honeycomb_flag_get = 0x803212e4;
+bk_empty_honeycomb_flag_set = 0x80321364;

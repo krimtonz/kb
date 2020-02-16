@@ -97,4 +97,7 @@ bk_extern   void        bk_jiggy_flag_set   (uint32_t jiggy_index, bool val);
 
 bk_extern   bool        bk_mumbo_token_flag_get   (uint32_t mt_index);
 bk_extern   void        bk_mumbo_token_flag_set   (uint32_t mt_index, bool val);
+
+bk_extern   bool        bk_empty_honeycomb_flag_get   (uint32_t honeycomb_index);
+bk_extern   void        bk_empty_honeycomb_flag_set   (uint32_t honeycomb_index, bool val);
 #endif

@@ -291,3 +291,31 @@ mumbo_token_data_t mumbo_token_table[]={
     { 0x73, 8, "winter sir slush"},
     { 0, 0, NULL}
 };
+
+honeycomb_data_t empty_honeycomb_table[]={
+    { 0x01, 1, "hill"},
+    { 0x02, 1, "juju"},
+    { 0x03, 2, "underwater"},
+    { 0x04, 2, "floating box"},
+    { 0x05, 3, "underwater"},
+    { 0x06, 3, "above water"},
+    { 0x07, 4, "in mumbo's"},
+    { 0x08, 4, "in tanktup"},
+    { 0x09, 5, "in wozza's cave"},
+    { 0x0a, 5, "sir slush"},
+    { 0x0b, 7, "cactus"},
+    { 0x0c, 7, "gobi 3"},
+    { 0x0d, 8, "gnawty's"},
+    { 0x0e, 8, "nabnut's"},
+    { 0x0f, 9, "boat house"},
+    { 0x10, 9, "engine room"},
+    { 0x11, 10, "church rafters"},
+    { 0x12, 10, "floorboard"},
+    { 0x13, 11, "stump"},
+    { 0x14, 11, "waterfall"},
+    { 0x15, 11, "underwater"},
+    { 0x16, 11, "tree"},
+    { 0x17, 11, "coliwobble"},
+    { 0x18, 11, "quarries"},
+    {0,0,NULL}
+};
