@@ -4,7 +4,6 @@
 #include "bk.h"
 #include "items.h"
 
-
 static void item_set_count(bk_item_t item, uint32_t count){
     uint32_t clamped_cnt = count;
     uint32_t max_health = 0; 
@@ -167,6 +166,8 @@ static menu_t *create_jiggy_level_menu(uint32_t lvl){
     return jiggy_submenu;
 }
 
+
+
 static menu_t *create_jiggy_menu(){
     menu_t *jiggy_submenu = malloc(sizeof(*jiggy_submenu));;
     menu_init(jiggy_submenu,0,0);
@@ -184,6 +185,57 @@ static menu_t *create_jiggy_menu(){
     return jiggy_submenu;
 }
 
+static int mumbo_token_callback(event_handler_t *handler, menu_event_t event, void *data){
+    uint32_t mumbo_token_index = handler->callback_data;
+    if(event == MENU_EVENT_ACTIVATE){
+        bool has_mumbo_token = bk_mumbo_token_flag_get(mumbo_token_index);
+        if(has_mumbo_token){
+            bk_mumbo_token_flag_set(mumbo_token_index, 0);
+        } else {
+            bk_mumbo_token_flag_set(mumbo_token_index, 1);
+        }
+        return 1;
+    } else if (event == MENU_EVENT_UPDATE) {
+        menu_checkbox_set(handler->subscriber, bk_mumbo_token_flag_get(mumbo_token_index));
+        return 1;
+    }
+    return 0;
+}
+
+
+static menu_t *create_mumbo_token_level_menu(uint32_t lvl){
+    menu_t *mumbo_token_submenu = malloc(sizeof(*mumbo_token_submenu));;
+    menu_init(mumbo_token_submenu,0,0);
+    mumbo_token_submenu->selected_item = menu_button_add(mumbo_token_submenu, 0, 0, "return", menu_return, NULL);
+    int y_pos = 1;
+    for(int i = 0; mumbo_token_table[i].mt_index != 0; i++){
+        if(mumbo_token_table[i].level == lvl){
+            menu_item_t *checkbox =  menu_checkbox_add(mumbo_token_submenu,0,y_pos);
+            menu_item_register_event(checkbox, MENU_EVENT_UPDATE | MENU_EVENT_ACTIVATE, mumbo_token_callback, mumbo_token_table[i].mt_index);
+            menu_label_add(mumbo_token_submenu,2,y_pos,mumbo_token_table[i].tooltip);
+            y_pos++;
+        }
+    }
+    return mumbo_token_submenu;
+}
+
+static menu_t *create_mumbo_token_menu(){
+    menu_t *mumbo_token_submenu = malloc(sizeof(*mumbo_token_submenu));;
+    menu_init(mumbo_token_submenu,0,0);
+    mumbo_token_submenu->selected_item = menu_button_add(mumbo_token_submenu, 0, 0, "return", menu_return, NULL);
+    menu_submenu_add(mumbo_token_submenu, 0,  1, "mumbo's mountain",      create_mumbo_token_level_menu(1));
+    menu_submenu_add(mumbo_token_submenu, 0,  2, "treasure trove cove",   create_mumbo_token_level_menu(2));
+    menu_submenu_add(mumbo_token_submenu, 0,  3, "clanker's cavern",      create_mumbo_token_level_menu(3));
+    menu_submenu_add(mumbo_token_submenu, 0,  4, "bubblegloop swamp",     create_mumbo_token_level_menu(4));
+    menu_submenu_add(mumbo_token_submenu, 0,  5, "freezeezy peak",        create_mumbo_token_level_menu(5));
+    menu_submenu_add(mumbo_token_submenu, 0,  6, "gobi's valley",         create_mumbo_token_level_menu(7));
+    menu_submenu_add(mumbo_token_submenu, 0,  7, "mad monster mansion",   create_mumbo_token_level_menu(10));
+    menu_submenu_add(mumbo_token_submenu, 0,  8, "rusty bucket bay",      create_mumbo_token_level_menu(9));
+    menu_submenu_add(mumbo_token_submenu, 0,  9, "click clock wood",      create_mumbo_token_level_menu(8));
+    menu_submenu_add(mumbo_token_submenu, 0, 10, "gruntilda's lair",      create_mumbo_token_level_menu(6));
+    return mumbo_token_submenu;
+}
+
 menu_t *create_items_menu(){
     menu_t *items_menu = malloc(sizeof(*items_menu));;
     menu_init(items_menu,0,0);
@@ -191,7 +243,7 @@ menu_t *create_items_menu(){
     menu_submenu_add( items_menu, 0, 1, "inventory", create_inventory_menu());
     menu_submenu_add( items_menu, 0, 2, "jiggies", create_jiggy_menu());
     //menu_submenu_add( items_menu, 0, 3, "note scores", create_note_scores_menu());
-    //menu_submenu_add( items_menu, 0, 4, "mumbo tokens", create_mumbotokens_menu());
+    menu_submenu_add( items_menu, 0, 4, "mumbo tokens", create_mumbo_token_menu());
     //menu_submenu_add( items_menu, 0, 5, "empty honeycombs", create_empty_honeycomb_menu());
     //menu_submenu_add( items_menu, 0, 6, "in-game timers", create_ig_timers_menu());
     return items_menu;

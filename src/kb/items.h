@@ -13,10 +13,17 @@ typedef struct jiggy_data {
     char       *tooltip;
 }jiggy_data_t;
 
+typedef struct mumbo_token_data {
+    uint32_t    mt_index;
+    uint32_t    level;
+    char       *tooltip;
+}mumbo_token_data_t;
+
 extern items_data_t items_table[];
 extern items_data_t level_items_table[];
 extern items_data_t timer_items_table[];
 
 extern jiggy_data_t jiggy_table[];
+extern mumbo_token_data_t mumbo_token_table[];
 
 #endif

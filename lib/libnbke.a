@@ -20,3 +20,6 @@ bk_global_flag_set      = 0x80320004;
 
 bk_jiggy_flag_get   = 0x80320fe0;
 bk_jiggy_flag_set   = 0x8032108c;
+
+bk_mumbo_token_flag_get = 0x80321544;
+bk_mumbo_token_flag_set = 0x803215d0;
