@@ -11,3 +11,20 @@ bk_controller_raw       = 0x802812B8;
 
 bk_take_me_there        = 0x802E4078;
 bk_transformation_set   = 0x8029a95c;
+
+bk_item_array           = 0x80385f30;
+bk_item_get_count       = 0x80345fa0;
+
+bk_global_flag_get      = 0x8031ff1c;
+bk_global_flag_set      = 0x80320004;
+
+bk_jiggy_flag_get   = 0x80320fe0;
+bk_jiggy_flag_set   = 0x8032108c;
+
+bk_mumbo_token_flag_get = 0x80321544;
+bk_mumbo_token_flag_set = 0x803215d0;
+
+bk_empty_honeycomb_flag_get = 0x803212e4;
+bk_empty_honeycomb_flag_set = 0x80321364;
+
+bk_high_note_scores = 0x80385ff0;
