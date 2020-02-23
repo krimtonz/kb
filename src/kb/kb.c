@@ -92,6 +92,8 @@ void init(void){
     menu_submenu_add(main_menu, 0, 1, "transformations", create_transformations_menu());
     menu_submenu_add(main_menu, 0, 2, "warps", create_warps_menu());
     menu_submenu_add(main_menu, 0, 3, "watches", create_watches_menu());
+    
+    menu_submenu_add(main_menu, 0, 5, "items", create_items_menu());
 
     kb.menu_active = 0;
     kb.ready = 1;
