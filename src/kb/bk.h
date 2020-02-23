@@ -29,6 +29,16 @@ typedef struct{
     int8_t y;
 } bk_controller_t;
 
+typedef enum transformations {
+    BK_TRANS_BANJO = 0x01,
+    BK_TRANS_TERMITE = 0X02,
+    BK_TRANS_PUMPKIN = 0X03,
+    BK_TRANS_WALRUS = 0X04,
+    BK_TRANS_CROC = 0X05,
+    BK_TRANS_BEE = 0X06,
+    BK_TRANS_WISHYWASHY = 0X07,
+} bk_transformation_t;
+
 typedef enum bK_item{
     BK_ITEM_SKULL_HOURGLASS        = 0x1,
     BK_ITEM_PROPELLOR_TIMER        = 0x3,
@@ -81,11 +91,16 @@ bk_extern   int32_t         bk_vi_counter;
 bk_extern   bk_controller_t bk_controller_raw;
 bk_extern   uint8_t         bk_high_note_scores;
 
-bk_extern   int         game_update         (void);
-bk_extern   void        load_code_stage2    (void);
-bk_extern   void        load_code_stage1    (void);
-bk_extern   void        bk_gfx_finish       (Gfx **p_gfx_p);
-bk_extern   void        bk_take_me_there    (uint32_t map, uint32_t exit, uint32_t warp_type);
+bk_extern   int         game_update                     (void);
+bk_extern   void        load_code_stage2                (void);
+bk_extern   void        load_code_stage1                (void);
+bk_extern   void        bk_gfx_finish                   (Gfx **p_gfx_p);
+bk_extern   void        bk_take_me_there                (uint32_t map, uint32_t exit, uint32_t warp_type);
+bk_extern   void        bk_transformation_set           (uint32_t transform);
+bk_extern   uint32_t    bk_idle_movement_index_get      (void);
+bk_extern   void        bk_player_movement_state_set    (uint32_t movement_state_indx);
+bk_extern   void        bk_player_model_update          (void);    
+
 
 bk_extern   uint32_t    bk_item_get_count   (uint32_t item_index);
 bk_extern   uint32_t    bk_item_array;

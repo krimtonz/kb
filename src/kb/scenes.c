@@ -359,7 +359,7 @@ static kb_scene_t MMM_scenes[16] = {
         }
     },
     { "rain barrel",
-        0x2E, 1,
+        0x2F, 2,
         (kb_entrance_t[]){
             {0x1, "downspout"},
             {0x2, "bottom"},
@@ -511,7 +511,7 @@ static kb_scene_t CCW_spring_scenes[5] = {
         }
     },
     { "zubba's hive",
-        0x5A, 1,
+        0x5B, 1,
         (kb_entrance_t[]){
             {0x1, ""},
         }
