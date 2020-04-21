@@ -89,8 +89,10 @@ void init(void){
     menu_init(main_menu, 20, 30);
 
     main_menu->selected_item = menu_button_add(main_menu, 0, 0, "return", main_menu_on_activate, NULL);
+    
     menu_submenu_add(main_menu, 0, 1, "warps", create_warps_menu());
     menu_submenu_add(main_menu, 0, 2, "watches", create_watches_menu());
+    menu_submenu_add(main_menu, 0, 4, "moves", create_moves_menu());
     menu_submenu_add(main_menu, 0, 5, "items", create_items_menu());
 
     kb.menu_active = 0;

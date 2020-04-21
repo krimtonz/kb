@@ -11,3 +11,14 @@ bk_controller_raw       = 0x80284754;
 
 bk_take_me_there        = 0x802e30b8;
 bk_transformation_set   = 0x802997d8;
+
+/* BK_Moves.c */
+bk_moves_has_used_get_bit    = 0x80294610;
+bk_moves_has_used_set_bit    = 0x80294628;
+bk_moves_unlocked_get_bit    = 0x80294648;
+bk_moves_unlocked_get        = 0x80294660;
+bk_moves_clear               = 0x80294674;
+bk_moves_unlocked_set_bit    = 0x80294688;
+bk_moves_unlocked_set        = 0x802946d4;
+bk_moves_has_used_set        = 0x802946e0;
+bk_moves_bitfield_stats      = 0x802946ec;

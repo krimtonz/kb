@@ -29,6 +29,29 @@ typedef struct{
     int8_t y;
 } bk_controller_t;
 
+typedef enum moves{
+    bk_moves_beakBarge = 0,
+    bk_moves_beakBomb = 1,
+    bk_moves_beakBuster = 2,
+    bk_moves_cameraControls = 3,
+    bk_moves_bearPunch = 4,
+    bk_moves_climbTrees = 5,
+    bk_moves_eggs = 6,
+    bk_moves_featheryFlap = 7,
+    bk_moves_flapFlip = 8,
+    bk_moves_flying = 9,
+    bk_moves_holdAToJumpHigher = 10,
+    bk_moves_ratATatRap = 11,
+    bk_moves_roll = 12,
+    bk_moves_shockSpringJump = 13,
+    bk_moves_wadingBoots = 14,
+    bk_moves_dive = 15,
+    bk_moves_talonTrot = 16,
+    bk_moves_turboTalonTrainers = 17,
+    bk_moves_wonderwing = 18,
+    bk_moves_firstNoteDoorMolehill = 19,
+} bk_moves_t;
+
 typedef enum bK_item{
     BK_ITEM_SKULL_HOURGLASS        = 0x1,
     BK_ITEM_PROPELLOR_TIMER        = 0x3,
@@ -86,6 +109,16 @@ bk_extern   void        load_code_stage2    (void);
 bk_extern   void        load_code_stage1    (void);
 bk_extern   void        bk_gfx_finish       (Gfx **p_gfx_p);
 bk_extern   void        bk_take_me_there    (uint32_t map, uint32_t exit, uint32_t warp_type);
+
+bk_extern   bool        bk_moves_has_used_get_bit (uint32_t move_index);
+bk_extern   void        bk_moves_has_used_set_bit (uint32_t move_index); //code clear method
+bk_extern   bool        bk_moves_unlocked_get_bit (uint32_t move_index);
+bk_extern   uint32_t    bk_moves_unlocked_get(void);
+bk_extern   void        bk_moves_clear(void);
+bk_extern   void        bk_moves_unlocked_set_bit (uint32_t move_index, uint32_t boolean);
+bk_extern   void        bk_moves_unlocked_set(uint32_t value);
+bk_extern   void        bk_moves_has_used_set(uint32_t value);
+bk_extern   void        bk_moves_bitfield_stats(uint32_t* size, void* addr);
 
 bk_extern   uint32_t    bk_item_get_count   (uint32_t item_index);
 bk_extern   uint32_t    bk_item_array;

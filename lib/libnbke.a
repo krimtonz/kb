@@ -9,8 +9,20 @@ gfx_finish_hook         = 0x802E3B7C;
 kb_vi_counter           = 0x80274578; /* need nbke */
 bk_controller_raw       = 0x802812B8;
 
+
 bk_take_me_there        = 0x802E4078;
 bk_transformation_set   = 0x8029a95c;
+
+/* BK_Moves.c */
+bk_moves_has_used_set_bit    = 0x802957bc;
+bk_moves_has_used_get_bit    = 0x802957a0;
+bk_moves_unlocked_get_bit    = 0x802957d8;
+bk_moves_unlocked_get        = 0x802957f0;
+bk_moves_clear               = 0x80295804;
+bk_moves_unlocked_set_bit    = 0x80295818;
+bk_moves_unlocked_set        = 0x80295864;
+bk_moves_has_used_set        = 0x80295870;
+bk_moves_bitfield_stats      = 0x8029587c;
 
 bk_item_array           = 0x80385f30;
 bk_item_get_count       = 0x80345fa0;
