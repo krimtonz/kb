@@ -110,10 +110,15 @@ bk_extern   void        load_code_stage1    (void);
 bk_extern   void        bk_gfx_finish       (Gfx **p_gfx_p);
 bk_extern   void        bk_take_me_there    (uint32_t map, uint32_t exit, uint32_t warp_type);
 
-bk_extern   void        bk_moves_unlocked_set (uint32_t move_index, uint32_t boolean);
-bk_extern   bool        bk_moves_unlocked_get (uint32_t move_index);
-bk_extern   void        bk_moves_has_used_set (uint32_t move_index); //code clear method
-bk_extern   bool        bk_moves_has_used_get (uint32_t move_index);
+bk_extern   bool        bk_moves_has_used_get_bit (uint32_t move_index);
+bk_extern   void        bk_moves_has_used_set_bit (uint32_t move_index); //code clear method
+bk_extern   bool        bk_moves_unlocked_get_bit (uint32_t move_index);
+bk_extern   uint32_t    bk_moves_unlocked_get(void);
+bk_extern   void        bk_moves_clear(void);
+bk_extern   void        bk_moves_unlocked_set_bit (uint32_t move_index, uint32_t boolean);
+bk_extern   void        bk_moves_unlocked_set(uint32_t value);
+bk_extern   void        bk_moves_has_used_set(uint32_t value);
+bk_extern   void        bk_moves_bitfield_stats(uint32_t* size, void* addr);
 
 bk_extern   uint32_t    bk_item_get_count   (uint32_t item_index);
 bk_extern   uint32_t    bk_item_array;

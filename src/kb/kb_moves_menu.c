@@ -35,33 +35,16 @@ static struct moves_data moves_table[]={
 static int has_move_callback(event_handler_t *handler, menu_event_t callback, void *data){
     uint32_t moves_index = (uint32_t)handler->callback_data & 0xFF;
     if(callback == MENU_EVENT_ACTIVATE){   
-        bool is_unlocked =  bk_moves_unlocked_get(moves_index);
+        bool is_unlocked =  bk_moves_unlocked_get_bit(moves_index);
         if(is_unlocked){
-            bk_moves_unlocked_set(moves_index, 0);
+            bk_moves_unlocked_set_bit(moves_index, 0);
         } else {
-            bk_moves_unlocked_set(moves_index, 1);
+            bk_moves_unlocked_set_bit(moves_index, 1);
         }
+        bk_moves_has_used_set(bk_moves_unlocked_get());
         return 1;
     } else if(callback == MENU_EVENT_UPDATE) {
-        menu_checkbox_set(handler->subscriber,bk_moves_unlocked_get(moves_index));
-        return 1;
-    }
-    return 0;
-}
-
-static int used_move_callback(event_handler_t *handler, menu_event_t callback, void *data){
-    uint32_t moves_index = (uint32_t)handler->callback_data & 0xFF;
-    if(callback == MENU_EVENT_ACTIVATE){   
-        bool is_unlocked =  bk_moves_has_used_get(moves_index);
-        if(is_unlocked){
-            //bk_moves_unlocked_set(moves_index, 0);
-            //todo write clear function
-        } else {
-            bk_moves_has_used_set(moves_index);
-        }
-        return 1;
-    } else if(callback == MENU_EVENT_UPDATE) {
-        menu_checkbox_set(handler->subscriber,bk_moves_has_used_get(moves_index));
+        menu_checkbox_set(handler->subscriber,bk_moves_unlocked_get_bit(moves_index));
         return 1;
     }
     return 0;
@@ -76,12 +59,10 @@ menu_t *create_moves_menu(){
     for (int i = 0; i < sizeof(moves_table)/sizeof(struct moves_data); i++)
     {   //add visual elements
         menu_item_t* unlock_move_item = menu_checkbox_add(&moves_menu,0,i+1);
-        menu_item_t* has_used_move_item = menu_checkbox_add(&moves_menu,1,i+1);
-        menu_label_add(&moves_menu, 2,i+1,moves_table[i].tooltip);
+        menu_label_add(&moves_menu, 1,i+1,moves_table[i].tooltip);
         
         //set callback process
         menu_item_register_event(unlock_move_item,MENU_EVENT_ACTIVATE | MENU_EVENT_UPDATE, has_move_callback, (void*)moves_table[i].moves_indx);
-        menu_item_register_event(unlock_move_item,MENU_EVENT_ACTIVATE | MENU_EVENT_UPDATE, used_move_callback, (void*)moves_table[i].moves_indx);
     }
 
 
